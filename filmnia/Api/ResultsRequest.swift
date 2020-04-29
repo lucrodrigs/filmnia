@@ -76,13 +76,55 @@ struct DetailsMovie: Codable {
 //MARK: - DetailsTelevision
 struct DetailsTelevison: Codable {
     let numberOfSeasons: Int
+    let genres: [Genre]
     
     enum CodingKeys: String, CodingKey {
         case numberOfSeasons = "number_of_seasons"
+        case genres
     }
 }
 
+//MARK: - MultiSearch
+struct ResultsSearch {
+    var results: [MultiSearch]
+}
+
+struct MultiSearch: Codable {
+    let mediaType: String?
+    let id: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case mediaType = "media_type"
+        case id
+    }
+}
+
+//MARK: - Genres
 struct Genre: Codable {
     let id: Int
     let name: String
+}
+
+//MARK: - RequestTokenLogin
+struct ResultToken: Codable {
+    let success: Bool
+    let expiresAt: String
+    let requestToken: String
+
+    enum CodingKeys: String, CodingKey {
+        case success
+        case expiresAt = "expires_at"
+        case requestToken = "request_token"
+    }
+}
+
+//MARK: - AccountSession
+struct SessionInfo: Codable {
+    let success: Bool
+    let sessionId: String
+    
+    enum CodingKeys: String, CodingKey {
+        case success
+        case sessionId = "session_id"
+    }
 }

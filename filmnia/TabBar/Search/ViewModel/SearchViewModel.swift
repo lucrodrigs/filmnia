@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol SearchViewDelegate {
-    func showImagePosters(resultPoster: ResultsMovies)
-}
-
 class SearchViewModel {
     
     var resultSection: [ResultsMovies] = []
@@ -36,12 +32,12 @@ class SearchViewModel {
     
     func reloadSearch() {
         if !searchQuery.isEmpty {
-            resultSearchMovies(query: searchQuery)
+            resultSearch(query: searchQuery)
         }
     }
             
-    func resultSearchMovies(query: String) {
-        service.requestGetSearch(endPoint: .urlSearchMovies, query: query, type: ResultsMovies.self) { (result, error) in
+    func resultSearch(query: String) {
+        service.requestGetSearch(endPoint: .urlSearch, query: query, type: ResultsMovies.self) { (result, error) in
             if error != nil {
                 print("error")
             } else {

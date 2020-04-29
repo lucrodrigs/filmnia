@@ -8,11 +8,6 @@
 
 import Foundation
 
-protocol DetailsTelevisionDelegate {
-    func showImagePosters(resultMovies: ResultsTelevision)
-    func detailsTelevision()
-}
-
 class DetailsTelevisionViewModel {
     
     var television: Television

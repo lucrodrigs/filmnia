@@ -10,13 +10,25 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-//    init() {
-//
-//    }
+    var viewModel = LoginViewModel()
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @IBOutlet weak var password: UITextField?
+    @IBOutlet weak var username: UITextField?
+    
+    @IBAction func requestbtn(_ sender: UIButton) {
+        print("apertei o botao")
+        let user: String? = username?.text
+        let pass: String? = password?.text
+        viewModel.validateForLogin(username: user!, password: pass!)
     }
+    
+    
+
+   
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

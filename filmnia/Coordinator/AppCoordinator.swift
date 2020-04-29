@@ -8,15 +8,18 @@
 
 import UIKit
 
-protocol Coordinator {
-    
+enum Flux {
+    case home
+    case search
 }
 
-class AppCoordinator: Coordinator {
+class AppCoordinator {
     
     var window: UIWindow
     var viewTabBar: UITabBarController
-    var navDetails: FNavigationViewController?
+    var navigation: FNavigationViewController?
+    var searchNavigation: FNavigationViewController?
+    var homeNavigation: FNavigationViewController?
     
     init(window: UIWindow) {
         self.window = window
@@ -29,8 +32,7 @@ class AppCoordinator: Coordinator {
     func start() {
         viewTabBar.viewControllers = [initTabBarHome(),
                                       initTabBarSearch(),
-                                      initTabBarWatchlist(),
-                                      initTabBarWatched()]
+                                      initTabBarProfile()]
     }
     
     func initTabBarHome() -> FNavigationViewController {
@@ -39,66 +41,51 @@ class AppCoordinator: Coordinator {
         let navigation = FNavigationViewController(rootViewController: tabView)
         navigation.tabBarItem.image = UIImage(systemName: "house.fill")
         navigation.tabBarItem.title = "Home"
-        navDetails = navigation
+        //homeNavigation = navigation
+        self.navigation = navigation
         return navigation
     }
     
     func initTabBarSearch() -> FNavigationViewController {
         let tabView = SearchViewController()
+        tabView.delegate = self
         let navigation = FNavigationViewController(rootViewController: tabView)
         navigation.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         navigation.tabBarItem.title = "Search"
-        //tabView.delegate = self
+        searchNavigation = navigation
         return navigation
     }
     
-    func initTabBarWatchlist() -> FNavigationViewController {
-        let tabView = WatchlistViewController()
+    func initTabBarProfile() -> FNavigationViewController {
+        let tabView = ProfileViewController()
         let navigation = FNavigationViewController(rootViewController: tabView)
         navigation.tabBarItem.image = UIImage(systemName: "person.fill")
-        navigation.tabBarItem.title = "+ Watchlist"
+        navigation.tabBarItem.title = "Profile"
         return navigation
     }
     
-    func initTabBarWatched() -> FNavigationViewController {
-        let tabView = WatchedViewController()
-        let navigation = FNavigationViewController(rootViewController: tabView)
-        navigation.tabBarItem.image = UIImage(systemName: "person.fill")
-        navigation.tabBarItem.title = "+ Wacthed"
-        return navigation
-    }
-    
-    func detailsMovieViewControler(model: Movies) {
+    func detailsMovieViewControler(model: Movies/*, flux: Flux*/) {
         let viewModel = DetailsViewModel(movies: model)
         let detailsView = DetailsViewController(viewModel: viewModel)
-        navDetails?.pushViewController(detailsView, animated: true)
+        navigation?.pushViewController(detailsView, animated: true)
     }
     
     func detailsTelevisionViewControler(model: Television) {
         let viewModel = DetailsTelevisionViewModel(television: model)
         let detailsView = DetailsTelevisionViewController(viewModel: viewModel)
-        navDetails?.pushViewController(detailsView, animated: true)
-    }
-    
-    func setupProfileView() {
-//        let viewModel = ProfileViewModel()
-//        let profileView = ProfileViewController(model: viewModel)
-//        navDetails?.pushViewController(profileView, animated: true)
+        navigation?.pushViewController(detailsView, animated: true)
     }
     
 }
  
-extension AppCoordinator: DetailsSelectDelegate, HomeCoordinatorDelegate {
-    
-    func toGoProfile() {
-    }
+extension AppCoordinator: DetailsSelectDelegate {
     
     func televisonSelected(televison: Television) {
         detailsTelevisionViewControler(model: televison)
     }
     
-    func movieSelected(movie: Movies) {
-        detailsMovieViewControler(model: movie)
+    func movieSelected(movie: Movies/*, flux: Flux*/) {
+        detailsMovieViewControler(model: movie/*, flux: flux*/)
     }
     
 }

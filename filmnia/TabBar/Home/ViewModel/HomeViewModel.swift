@@ -8,14 +8,6 @@
 
 import Foundation
 
-protocol HomeViewDelegate {
-    func showImagePosters(resultPoster: ContentSection)
-}
-
-protocol HomeCoordinatorDelegate {
-    func toGoProfile()
-}
-
 enum ContentSection {
     case moviesPopular(ResultsMovies)
     case moviesUpComing(ResultsMovies)
@@ -28,7 +20,6 @@ enum ContentSection {
 class HomeViewModel {
     
     var delegate: HomeViewDelegate?
-    var coordinator: HomeCoordinatorDelegate?
     var resultSectionMovies: [ResultsMovies] = []
     var resultSectionTelevision: [ResultsTelevision] = []
     var service: HTTPRequest
@@ -119,10 +110,6 @@ class HomeViewModel {
                 }
             }
         }
-    }
-    
-    func callProfile() {
-        coordinator?.toGoProfile()
     }
     
 }

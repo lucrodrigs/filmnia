@@ -8,17 +8,12 @@
 
 import UIKit
 
-protocol DetailsSelectDelegate {
-    func movieSelected(movie: Movies)
-    func televisonSelected(televison: Television)
-}
-
 class TableViewCell: UITableViewCell {
     
     var resultsRequestMovie: ResultsMovies?
     var resultsRequestTelevison: ResultsTelevision?
     var section: CollectionSection?
-    var movieDelegate: DetailsSelectDelegate?
+    var delegate: DetailsSelectDelegate?
     var homeView: HomeViewController?
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -111,10 +106,10 @@ extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, U
         switch homeView?.segmentedControl?.selectedSegmentIndex {
         case 0:
             guard let movies = resultsRequestMovie?.results[indexPath.row] else { return }
-            movieDelegate?.movieSelected(movie: movies)
+            delegate?.movieSelected(movie: movies)
         case 1:
             guard let television = resultsRequestTelevison?.results[indexPath.row] else { return }
-            movieDelegate?.televisonSelected(televison: television)
+            delegate?.televisonSelected(televison: television)
         default:
             break
         }

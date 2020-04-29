@@ -52,7 +52,7 @@ extension SearchViewController: UISearchBarDelegate {
             resultsRequest?.results.removeAll()
             collectionView.reloadData()
         } else {
-            viewModel.resultSearchMovies(query: searchText)
+            viewModel.resultSearch(query: searchText)
         }
     }
     
@@ -76,7 +76,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         return cell ?? UICollectionViewCell()
     }
-    
+    //aqui
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let movies = resultsRequest?.results[indexPath.row] else { return }
         delegate?.movieSelected(movie: movies)
@@ -84,7 +84,16 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
 }
 
-extension SearchViewController: SearchViewDelegate {
+extension SearchViewController: SearchViewDelegate, DetailsSelectDelegate {
+    
+    func movieSelected(movie: Movies) {
+        delegate?.movieSelected(movie: movie)
+    }
+    
+    func televisonSelected(televison: Television) {
+        delegate?.televisonSelected(televison: televison)
+    }
+    
     
     func showImagePosters(resultPoster: ResultsMovies) {
         resultsRequest = resultPoster

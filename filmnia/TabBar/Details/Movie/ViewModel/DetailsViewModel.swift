@@ -8,16 +8,11 @@
 
 import Foundation
 
-protocol DetailsDelegate {
-    func showImagePosters(resultMovies: ResultsMovies)
-    func detailsMovie()
-}
-
 class DetailsViewModel {
     
     var movies: Movies
     var details: DetailsMovie?
-    var delegate: DetailsDelegate?
+    var delegate: DetailsMovieDelegate?
     var resultSection: [ResultsMovies] = []
     var service: HTTPRequest
     

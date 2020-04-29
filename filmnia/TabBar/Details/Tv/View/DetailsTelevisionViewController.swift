@@ -18,7 +18,7 @@ class DetailsTelevisionViewController: UIViewController {
     @IBOutlet weak var releaseSeasons: UILabel?
     @IBOutlet weak var titleTelevision: UILabel?
     
-    var delegate: DetailsDelegate?
+    var delegate: DetailsMovieDelegate?
     var resultsRequest: ResultsTelevision?
     var viewModel: DetailsTelevisionViewModel!
     

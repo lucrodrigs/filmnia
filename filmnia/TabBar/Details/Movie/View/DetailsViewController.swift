@@ -11,15 +11,16 @@ import UIKit
 class DetailsViewController: UIViewController {
     
     @IBOutlet weak var posterMovie: UIImageView?
-    @IBOutlet weak var movieAverage: UILabel?
     @IBOutlet weak var titleMovie: UILabel?
     @IBOutlet weak var recommendationMovie: UILabel?
     @IBOutlet weak var runTime: UILabel?
     @IBOutlet weak var releaseAge: UILabel?
     @IBOutlet weak var overviewLabel: UILabel?
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var rateAverage: UIView!
+    @IBOutlet weak var rateLabel: UILabel?
     
-    var delegate: DetailsDelegate?
+    var delegate: DetailsMovieDelegate?
     var resultsRequest: ResultsMovies?
     var viewModel: DetailsViewModel!
     
@@ -56,18 +57,62 @@ class DetailsViewController: UIViewController {
     
     func voteAverage() {
         let voteAverage = viewModel.movies.voteAverage
-        let voteString  = String(voteAverage)
+        let voteString = String(voteAverage)
+        let shapeColor: CGColor
+        let transparentColor: CGColor
         
         if voteAverage < 4.0 {
-            movieAverage?.text = voteString.replacingOccurrences(of: ".", with: "") + "% relevante"
-            movieAverage?.textColor = .red
+            shapeColor = UIColor.red.cgColor
+            transparentColor = UIColor.systemRed.cgColor
+            rateLabel?.text = voteString.replacingOccurrences(of: ".", with: "") + "%"
         } else if voteAverage < 7.0 {
-            movieAverage?.text = voteString.replacingOccurrences(of: ".", with: "") + "% relevante"
-            movieAverage?.textColor = .systemYellow
+            shapeColor = UIColor.yellow.cgColor
+            transparentColor = UIColor.systemYellow.cgColor
+            rateLabel?.text = voteString.replacingOccurrences(of: ".", with: "") + "%"
         } else {
-            movieAverage?.text = voteString.replacingOccurrences(of: ".", with: "") + "% relevante"
-            movieAverage?.textColor = .green
+            shapeColor = UIColor.green.cgColor
+            transparentColor = UIColor.systemGreen.cgColor
+            rateLabel?.text = voteString.replacingOccurrences(of: ".", with: "") + "%"
         }
+
+        let rateFinal = CGFloat(voteAverage / 10) * 0.8
+        createRateAverage(rate: rateFinal, transparentColor: transparentColor, shapeColor: shapeColor)
+    }
+    
+    func createRateAverage(rate: CGFloat, transparentColor: CGColor, shapeColor: CGColor){
+        let shapeLayer = CAShapeLayer()
+        let trackLayer = CAShapeLayer()
+        let transparentLayer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: CGPoint(x: rateAverage.frame.size.width/2, y: rateAverage.frame.size.height/2), radius: 30, startAngle: -.pi / 2, endAngle: 2 * .pi, clockwise: true)
+        
+        trackLayer.path = circularPath.cgPath
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 15
+        trackLayer.fillColor = UIColor.lightGray.cgColor
+        trackLayer.strokeEnd = 0.8
+        rateAverage.layer.addSublayer(trackLayer)
+        
+        transparentLayer.path = circularPath.cgPath
+        transparentLayer.strokeColor = transparentColor
+        transparentLayer.lineWidth = 5
+        transparentLayer.fillColor = UIColor.clear.cgColor
+        transparentLayer.strokeEnd = 0.8
+        rateAverage.layer.addSublayer(transparentLayer)
+        
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.strokeColor = shapeColor
+        shapeLayer.lineWidth = 5
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineCap = .round
+        rateAverage.layer.addSublayer(shapeLayer)
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.duration = 2
+        animation.fromValue = 0
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
+        shapeLayer.strokeEnd = rate
+        shapeLayer.add(animation, forKey: "animateProgress")
     }
     
     func timeMovie() {
@@ -98,7 +143,7 @@ class DetailsViewController: UIViewController {
     
 }
 
-extension DetailsViewController: DetailsDelegate {
+extension DetailsViewController: DetailsMovieDelegate {
     
     func showImagePosters(resultMovies: ResultsMovies) {
         resultsRequest = resultMovies

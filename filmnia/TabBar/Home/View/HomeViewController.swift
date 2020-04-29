@@ -20,22 +20,22 @@ class HomeViewController: UIViewController {
         var titleSectionsMovies: String {
             switch self {
             case .popular:
-                return " filmes populares"
+                return " Popular Movies"
             case .upComing:
-                return " filmes em breve"
+                return " Upoming Movies"
             case .nowPlaying:
-                return " filmes em cartaz"
+                return " Now Playing Movies"
             }
         }
         
         var titleSectionsTelevision: String {
             switch self {
             case .popular:
-                return " series populares"
+                return " Popular Series"
             case .upComing:
-                return " series toprated"
+                return " Top Rated Series"
             case .nowPlaying:
-                return " series na televisão"
+                return " On The Air "
             }
         }
         
@@ -62,6 +62,7 @@ class HomeViewController: UIViewController {
     //MARK: - Variables
     var viewModel = HomeViewModel()
     var delegate: DetailsSelectDelegate?
+    //var enumerateSection: EnumerateSection?
     var popularMovies = ResultsMovies(results: [])
     var upComingMovies = ResultsMovies(results: [])
     var nowPlayingMovies = ResultsMovies(results: [])
@@ -72,10 +73,6 @@ class HomeViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var tableViewHome: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl?
-    
-    @IBAction func buttonProfile(_ sender: UIButton!) {
-        viewModel.callProfile()
-    }
     
     @IBAction func indexChanged(_ sender: Any?) {
         switch segmentedControl?.selectedSegmentIndex {
@@ -128,7 +125,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 0
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,7 +133,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title = UILabel()
-       
+        title.font = UIFont(name: "Gilroy-SemiBold", size: title.font.pointSize)
+        
         switch segmentedControl?.selectedSegmentIndex {
         case 0:
             title.text = Section.allCases[section].titleSectionsMovies
@@ -146,7 +143,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        
         return title
     }
     
@@ -166,7 +162,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.setupCollectionView(view: self)
-        cell.movieDelegate = self
+        cell.delegate = self
         
         switch segmentedControl?.selectedSegmentIndex {
         case 0:
@@ -192,9 +188,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.reloadData()
         return cell
-        
     }
-    
 }
 
 extension HomeViewController: HomeViewDelegate, DetailsSelectDelegate {
