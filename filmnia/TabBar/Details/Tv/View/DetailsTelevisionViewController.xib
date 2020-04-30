@@ -12,6 +12,8 @@
                 <outlet property="collectionView" destination="El9-L2-xvL" id="bc6-Ts-nrJ"/>
                 <outlet property="overviewTelevision" destination="IkQ-6N-wzU" id="55K-Gd-zFi"/>
                 <outlet property="posterTelevision" destination="wUQ-Cg-dCQ" id="Ekc-1X-mWN"/>
+                <outlet property="rateAverage" destination="iXd-MP-MIK" id="Ncj-Zn-lGF"/>
+                <outlet property="rateLabel" destination="v8E-d7-XGl" id="WLh-gP-GDF"/>
                 <outlet property="recommendationTitle" destination="xEN-cL-KdY" id="RIZ-iv-YvI"/>
                 <outlet property="releaseAge" destination="6dJ-7u-HB2" id="hZw-uS-OAk"/>
                 <outlet property="releaseSeasons" destination="kRj-hs-NMi" id="cmm-MT-TXw"/>
@@ -87,6 +89,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXd-MP-MIK">
+                    <rect key="frame" x="255" y="325" width="100" height="100"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-d7-XGl">
+                    <rect key="frame" x="282" y="364.5" width="46" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -98,13 +109,19 @@
                 <constraint firstItem="IkQ-6N-wzU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Lw5-hf-2Kr"/>
                 <constraint firstItem="xEN-cL-KdY" firstAttribute="top" secondItem="IkQ-6N-wzU" secondAttribute="bottom" constant="12" id="Oj1-s1-hpI"/>
                 <constraint firstItem="wUQ-Cg-dCQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="PPK-Bu-Lh1"/>
+                <constraint firstItem="v8E-d7-XGl" firstAttribute="centerX" secondItem="iXd-MP-MIK" secondAttribute="centerX" id="QHb-lv-pK9"/>
+                <constraint firstItem="iXd-MP-MIK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="281" id="T0q-6m-ViJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iXd-MP-MIK" secondAttribute="trailing" constant="59" id="T4Y-Gg-sqf"/>
                 <constraint firstItem="wUQ-Cg-dCQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="108" id="Txp-mx-w96"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IYV-q1-87u" secondAttribute="trailing" constant="24" id="WXh-az-iur"/>
                 <constraint firstItem="IYV-q1-87u" firstAttribute="top" secondItem="wUQ-Cg-dCQ" secondAttribute="bottom" constant="10" id="Wss-3v-hBM"/>
+                <constraint firstItem="iXd-MP-MIK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="255" id="ZCb-qw-V2G"/>
                 <constraint firstItem="IkQ-6N-wzU" firstAttribute="top" secondItem="IYV-q1-87u" secondAttribute="bottom" id="Zyh-qg-FvM"/>
+                <constraint firstItem="IYV-q1-87u" firstAttribute="top" secondItem="iXd-MP-MIK" secondAttribute="bottom" constant="4" id="hfZ-PA-aJY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wUQ-Cg-dCQ" secondAttribute="trailing" constant="107" id="kb2-5g-K9z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wUQ-Cg-dCQ" secondAttribute="bottom" constant="443" id="oTU-rI-LVY"/>
                 <constraint firstItem="El9-L2-xvL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rc6-Gq-MEC"/>
+                <constraint firstItem="v8E-d7-XGl" firstAttribute="centerY" secondItem="iXd-MP-MIK" secondAttribute="centerY" id="xjk-1P-McW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="122.54464285714285"/>
