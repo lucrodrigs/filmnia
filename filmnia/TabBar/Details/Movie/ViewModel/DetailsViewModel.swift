@@ -53,4 +53,17 @@ class DetailsViewModel {
     }
     
     
+    
+    
+//    let date = Date()
+//    let formate = date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
+//        
+//       func getFormattedDate(format: String) -> String {
+//            let dateformat = DateFormatter()
+//            dateformat.dateFormat = format
+//            return dateformat.string(from: self)
+//        }
+
+    
+    
 }

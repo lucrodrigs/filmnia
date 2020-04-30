@@ -17,6 +17,7 @@ class PosterCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         cornerRadiusPoster()
+        self.contentView.backgroundColor = .clear
     }
     
 //aqui eu transformo a url de posterPath em imagem

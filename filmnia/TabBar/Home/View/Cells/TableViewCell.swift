@@ -22,6 +22,8 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
+        self.collectionView.backgroundColor = .red
+        self.contentView.backgroundColor = .blue
     }
     
     func setupCollectionView(view: HomeViewController) {

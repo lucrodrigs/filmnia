@@ -124,6 +124,8 @@ class DetailsViewController: UIViewController {
     func releaseMovie() {
         let releaseData = viewModel.details?.releaseDate
         releaseAge?.text = String(releaseData ?? "N/A")
+        //viewModel.convertDateFormat()
+        
     }
     
     func overviewMovie() {
