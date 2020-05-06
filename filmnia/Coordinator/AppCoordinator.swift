@@ -16,15 +16,15 @@ enum Flux {
 class AppCoordinator {
     
     var window: UIWindow
-    var viewTabBar: UITabBarController
+    var viewTabBar: FTabBarViewController
     var navigation: FNavigationViewController?
     var searchNavigation: FNavigationViewController?
     var homeNavigation: FNavigationViewController?
     
     init(window: UIWindow) {
         self.window = window
-        viewTabBar = UITabBarController()
-        viewTabBar.view.backgroundColor = .white
+        viewTabBar = FTabBarViewController()
+        viewTabBar.view.backgroundColor = .blue
         window.rootViewController = viewTabBar
         window.makeKeyAndVisible()
     }

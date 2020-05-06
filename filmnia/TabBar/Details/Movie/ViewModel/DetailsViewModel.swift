@@ -52,18 +52,20 @@ class DetailsViewModel {
         }
     }
     
-    
-    
-    
-//    let date = Date()
-//    let formate = date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
-//        
-//       func getFormattedDate(format: String) -> String {
-//            let dateformat = DateFormatter()
-//            dateformat.dateFormat = format
-//            return dateformat.string(from: self)
-//        }
+}
 
+extension Date {
     
+    func toString(with format: EnumerateSection.FormatStyle) -> String {
+        return toString(withFormat: format.rawValue)
+    }
+    
+    func toString(withFormat: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = withFormat
+        dateFormatter.locale = Locale.init(identifier: "en_US")
+        return dateFormatter.string(from: self)
+    }
     
 }
+

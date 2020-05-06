@@ -59,19 +59,10 @@ class EnumerateSection {
         }
 
     }
-    //2020-09-17
-//    enum ReleaseMonth: String {
-//        case 01 = "january"
-//        case 02 = "february"
-//        case march
-//        case april
-//        case may
-//        case june
-//        case july
-//        case august
-//        case september
-//        case october
-//        case november
-//        case december
-//    }
+    
+    enum FormatStyle: String {
+        case longDateDetail = "dd 'de' MMMM 'de' yyyy"
+        case monthAndYearName = "MMMM yyyy"
+    }
+
 }

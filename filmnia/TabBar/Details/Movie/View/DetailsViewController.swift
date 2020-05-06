@@ -33,14 +33,21 @@ class DetailsViewController: UIViewController {
         super.init(coder: coder)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         setupRecomendationCollectionView()
         viewModel.recomendationMovies()
         viewModel.detailsMovie()
         viewModel.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
+        self.collectionView.backgroundColor = .clear
     }
     
     func setupRecomendationCollectionView() {
@@ -60,7 +67,7 @@ class DetailsViewController: UIViewController {
         let voteString = String(voteAverage)
         let shapeColor: CGColor
         let transparentColor: CGColor
-        
+        rateLabel?.font = UIFont(name: "Gilroy-SemiBold", size: rateLabel?.font.pointSize ?? 17)
         if voteAverage < 4.0 {
             shapeColor = UIColor.red.cgColor
             transparentColor = UIColor.systemRed.cgColor
@@ -86,9 +93,9 @@ class DetailsViewController: UIViewController {
         let circularPath = UIBezierPath(arcCenter: CGPoint(x: rateAverage.frame.size.width/2, y: rateAverage.frame.size.height/2), radius: 30, startAngle: -.pi / 2, endAngle: 2 * .pi, clockwise: true)
         
         trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.strokeColor = UIColor.ColorDarkDefault.cgColor
         trackLayer.lineWidth = 15
-        trackLayer.fillColor = UIColor.lightGray.cgColor
+        trackLayer.fillColor = UIColor.ColorDarkDefault.cgColor
         trackLayer.strokeEnd = 0.8
         rateAverage.layer.addSublayer(trackLayer)
         
@@ -117,29 +124,40 @@ class DetailsViewController: UIViewController {
     
     func timeMovie() {
         if let releaseTime = viewModel.details?.runtime {
+            runTime?.font = UIFont(name: "Gilroy-SemiBold", size: runTime?.font.pointSize ?? 17)
+            runTime?.textColor = .white
             runTime?.text = String(releaseTime / 60) + " hours " + String(releaseTime % 60) + " minutes"
         }
     }
     
     func releaseMovie() {
-        let releaseData = viewModel.details?.releaseDate
-        releaseAge?.text = String(releaseData ?? "N/A")
-        //viewModel.convertDateFormat()
-        
+        let releaseDate = viewModel.details?.releaseDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: releaseDate ?? "N/A")
+        releaseAge?.font = UIFont(name: "Gilroy-SemiBold", size: releaseAge?.font.pointSize ?? 17)
+        releaseAge?.textColor = .white
+        releaseAge?.text = date?.toString(with: .longDateDetail)
     }
     
     func overviewMovie() {
         let overview = viewModel.movies.overview
+        overviewLabel?.font = UIFont(name: "Gilroy-Light", size: overviewLabel?.font.pointSize ?? 12)
+        overviewLabel?.textColor = .white
         overviewLabel?.text = overview
     }
     
     func titleMovies() {
         let title = viewModel.details?.originalTitle
+        titleMovie?.font = UIFont(name: "Gilroy-ExtraBold", size: titleMovie?.font.pointSize ?? 24)
+        titleMovie?.textColor = .white
         titleMovie?.text = title
     }
     
     func recommendationTitle() {
         let titleRecommendation = viewModel.details?.originalTitle
+        recommendationMovie?.font = UIFont(name: "Gilroy-SemiBold", size: recommendationMovie?.font.pointSize ?? 17)
+        recommendationMovie?.textColor = .white
         recommendationMovie?.text = String("Recommendation for " + (titleRecommendation ?? "untitle"))
     }
     
@@ -191,4 +209,3 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
 }
-

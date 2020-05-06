@@ -45,7 +45,7 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYV-q1-87u">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYV-q1-87u" userLabel="Details Television">
                     <rect key="frame" x="15" y="429" width="375" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Television" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEb-gI-93f">
@@ -66,7 +66,6 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="kRj-hs-NMi" firstAttribute="leading" secondItem="IYV-q1-87u" secondAttribute="leading" id="9LY-5a-QcQ"/>
                         <constraint firstItem="6dJ-7u-HB2" firstAttribute="top" secondItem="kRj-hs-NMi" secondAttribute="bottom" constant="5" id="Kcm-eM-4SI"/>

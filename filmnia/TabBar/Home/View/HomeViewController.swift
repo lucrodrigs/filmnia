@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var tableViewHome: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl?
+    @IBOutlet weak var viewSegmented: UIView!
     
     @IBAction func indexChanged(_ sender: Any?) {
         switch segmentedControl?.selectedSegmentIndex {
@@ -41,8 +42,13 @@ class HomeViewController: UIViewController {
             tableViewHome.reloadData()
         }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         setupTableView()
         viewModel.resultPosterGetMoviesPopulars()
         viewModel.resultPosterGetUpComing()

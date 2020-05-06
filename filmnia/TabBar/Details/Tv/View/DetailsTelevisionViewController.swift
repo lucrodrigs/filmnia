@@ -17,7 +17,7 @@ class DetailsTelevisionViewController: UIViewController {
     @IBOutlet weak var releaseAge: UITextField?
     @IBOutlet weak var releaseSeasons: UILabel?
     @IBOutlet weak var titleTelevision: UILabel?
-    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var rateLabel: UILabel?
     @IBOutlet weak var rateAverage: UIView!
     
     var delegate: DetailsMovieDelegate?
@@ -33,14 +33,21 @@ class DetailsTelevisionViewController: UIViewController {
         super.init(coder: coder)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         setupRecomendationCollectionView()
         viewModel.recomendationTelevision()
         viewModel.detailsTelevision()
         viewModel.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
+        self.collectionView.backgroundColor = .clear
     }
     
     func setupRecomendationCollectionView() {
@@ -60,6 +67,7 @@ class DetailsTelevisionViewController: UIViewController {
         let voteString = String(voteAverage)
         let shapeColor: CGColor
         let transparentColor: CGColor
+        rateLabel?.font = UIFont(name: "Gilroy-SemiBold", size: rateLabel?.font.pointSize ?? 17)
         
         if voteAverage < 4.0 {
             shapeColor = UIColor.red.cgColor
@@ -86,9 +94,9 @@ class DetailsTelevisionViewController: UIViewController {
         let circularPath = UIBezierPath(arcCenter: CGPoint(x: rateAverage.frame.size.width/2, y: rateAverage.frame.size.height/2), radius: 30, startAngle: -.pi / 2, endAngle: 2 * .pi, clockwise: true)
         
         trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.strokeColor = UIColor.ColorDarkDefault.cgColor
         trackLayer.lineWidth = 15
-        trackLayer.fillColor = UIColor.lightGray.cgColor
+        trackLayer.fillColor = UIColor.ColorDarkDefault.cgColor
         trackLayer.strokeEnd = 0.8
         rateAverage.layer.addSublayer(trackLayer)
         
@@ -117,26 +125,39 @@ class DetailsTelevisionViewController: UIViewController {
     
     func televisionTitle() {
         let title = viewModel.television.name
+        titleTelevision?.font = UIFont(name: "Gilroy-ExtraBold", size: titleTelevision?.font.pointSize ?? 24)
+        titleTelevision?.textColor = .white
         titleTelevision?.text = title
     }
     
     func countSeasons() {
         let seasons = viewModel.details?.numberOfSeasons
+        releaseSeasons?.font = UIFont(name: "Gilroy-SemiBold", size: releaseSeasons?.font.pointSize ?? 17)
+        releaseSeasons?.textColor = .white
         releaseSeasons?.text = String(seasons ?? 0) + " seasons"
     }
     
     func releaseDate() {
         let release = viewModel.television.firstAirDate
-        releaseAge?.text = "First episode in air on " + release
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: release)
+        releaseAge?.font = UIFont(name: "Gilroy-SemiBold", size: releaseAge?.font?.pointSize ?? 17)
+        releaseAge?.textColor = .white
+        releaseAge?.text = "First episode in air on " + (date?.toString(with: .longDateDetail) ?? "N/A")
     }
     
     func overview() {
         let overview = viewModel.television.overview
+        overviewTelevision?.font = UIFont(name: "Gilroy-Light", size: overviewTelevision?.font.pointSize ?? 12)
+        overviewTelevision?.textColor = .white
         overviewTelevision?.text = overview
     }
     
     func titleRecommendations() {
         let recommendations = viewModel.television.name
+        recommendationTitle?.font = UIFont(name: "Gilroy-SemiBold", size: recommendationTitle?.font.pointSize ?? 17)
+        recommendationTitle?.textColor = .white
         recommendationTitle?.text = "Recommendations for " + recommendations
     }
 

@@ -12,6 +12,7 @@
                 <outlet property="segmentedControl" destination="aII-Td-mOp" id="nH0-Ij-zKc"/>
                 <outlet property="tableViewHome" destination="zZu-tk-TjE" id="OBw-H4-Wrh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewSegmented" destination="qoA-Qx-x4a" id="enh-eZ-g6g"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

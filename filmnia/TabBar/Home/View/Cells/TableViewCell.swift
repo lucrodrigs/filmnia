@@ -8,6 +8,8 @@
 
 import UIKit
 
+//SectionsTableViewCell
+
 class TableViewCell: UITableViewCell {
     
     var resultsRequestMovie: ResultsMovies?
@@ -22,8 +24,9 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.collectionView.backgroundColor = .red
-        self.contentView.backgroundColor = .blue
+        self.collectionView.backgroundColor = .clear
+        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
     }
     
     func setupCollectionView(view: HomeViewController) {

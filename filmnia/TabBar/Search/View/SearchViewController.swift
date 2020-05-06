@@ -17,8 +17,13 @@ class SearchViewController: UIViewController {
     var delegate: DetailsSelectDelegate?
     var resultsRequest: ResultsMovies?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         setupSearchCollectionCell()
         hideKeyboardWhenTappedAround()
         viewModelReload()
@@ -27,6 +32,8 @@ class SearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
+        self.collectionView.backgroundColor = .clear
     }
     
         func setupSearchCollectionCell() {
