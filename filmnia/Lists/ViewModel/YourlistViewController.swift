@@ -1,14 +1,14 @@
 //
-//  WatchlistViewController.swift
+//  YourlistViewController.swift
 //  filmnia
 //
-//  Created by UserTQI on 16/03/20.
+//  Created by UserTQI on 12/05/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
 import UIKit
 
-class WatchlistViewController: UIViewController {
+class YourlistViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

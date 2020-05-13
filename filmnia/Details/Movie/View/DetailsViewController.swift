@@ -69,16 +69,16 @@ class DetailsViewController: UIViewController {
         let transparentColor: CGColor
         rateLabel?.font = UIFont(name: "Gilroy-SemiBold", size: rateLabel?.font.pointSize ?? 17)
         if voteAverage < 4.0 {
-            shapeColor = UIColor.red.cgColor
-            transparentColor = UIColor.systemRed.cgColor
+            shapeColor = UIColor.ColorLightRed.cgColor
+            transparentColor = UIColor.ColorDarkRed.cgColor
             rateLabel?.text = voteString.replacingOccurrences(of: ".", with: "") + "%"
         } else if voteAverage < 7.0 {
-            shapeColor = UIColor.yellow.cgColor
-            transparentColor = UIColor.systemYellow.cgColor
+            shapeColor = UIColor.ColorLightYellow.cgColor
+            transparentColor = UIColor.ColorDarkYellow.cgColor
             rateLabel?.text = voteString.replacingOccurrences(of: ".", with: "") + "%"
         } else {
-            shapeColor = UIColor.green.cgColor
-            transparentColor = UIColor.systemGreen.cgColor
+            shapeColor = UIColor.ColorLightGreen.cgColor
+            transparentColor = UIColor.ColorDarkGreen.cgColor
             rateLabel?.text = voteString.replacingOccurrences(of: ".", with: "") + "%"
         }
 
@@ -160,6 +160,16 @@ class DetailsViewController: UIViewController {
         recommendationMovie?.textColor = .white
         recommendationMovie?.text = String("Recommendation for " + (titleRecommendation ?? "untitle"))
     }
+    
+    func closeDetails() {
+        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func closeButtonAction(_ sender: Any) {
+        closeDetails()
+    }
+    
     
 }
 

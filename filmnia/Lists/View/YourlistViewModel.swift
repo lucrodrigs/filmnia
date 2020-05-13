@@ -1,8 +1,8 @@
 //
-//  WatchlistViewModel.swift
+//  YourlistViewModel.swift
 //  filmnia
 //
-//  Created by UserTQI on 21/04/20.
+//  Created by UserTQI on 12/05/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
