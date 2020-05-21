@@ -9,22 +9,36 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    var viewModel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
+        viewModel.delegate = self
+        viewModel.requestTokenForLogin()
+        hideKeyboardWhenTappedAround()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func Login() {
+        let user: String? = username.text
+        let pass: String? = password.text
+        viewModel.validateForLogin(username: user ?? "", password: pass ?? "")
     }
-    */
+    
+    @IBAction func clickLogin(_ sender: UIButton) {
+        Login()
+    }
+    
+}
 
+extension LoginViewController: LoginViewDelegate {
+    
+    func erroLogin(error: Error) {
+        print("ERROR NO LOGIN")
+    }
+    
 }

@@ -46,5 +46,11 @@ extension UIColor {
     public static let ColorDarkBlueDefault = UIColor(hex6: 0x050409)
     public static let ColorGrayDefault = UIColor(hex6: 0x4F4F4F)
     public static let ColorDarkDefault = UIColor(hex6: 0x19181d)
+    public static let ColorDarkRed = UIColor(hex6: 0x4b1e35)
+    public static let ColorLightRed = UIColor(hex6: 0xc93c60)
+    public static let ColorDarkYellow = UIColor(hex6: 0x403c19)
+    public static let ColorLightYellow = UIColor(hex6: 0xcfd351)
+    public static let ColorDarkGreen = UIColor(hex6: 0x284330)
+    public static let ColorLightGreen = UIColor(hex6: 0x65c984)
     
 }

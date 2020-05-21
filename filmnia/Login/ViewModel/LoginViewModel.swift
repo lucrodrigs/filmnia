@@ -13,6 +13,8 @@ class LoginViewModel {
     var resultToken: [ResultToken] = []
     var service: HTTPRequest
     var variablesToken: ResultToken?
+    weak var delegate: LoginViewDelegate?
+    weak var coordinatorDelegate: LoginCoordinatorDelegate?
     
     init(service: HTTPRequest = HTTPRequest()) {
         self.service = service
@@ -25,8 +27,6 @@ class LoginViewModel {
             } else {
                 if let result = result {
                     self.variablesToken = result
-                    print("generate token is success")
-                    print(self.variablesToken?.requestToken ?? "")
                 }
             }
         }
@@ -36,16 +36,16 @@ class LoginViewModel {
         let params: [String: String] = ["username":username,
                                         "password":password,
                                         "request_token":variablesToken?.requestToken ?? ""]
-        print(params)
         
         service.validateLogin(endPoint: .urlValidateLoginAcess, params: params, type: ResultToken.self) { (result, error) in
-            if error != nil {
+            if let error = error {
                 print("error")
+                self.delegate?.erroLogin(error: error)
             } else {
                 if result != nil {
-                    print("login request is success")
-                    print(result ?? "")
                     self.createSessionForLogin(requestToken: self.variablesToken?.requestToken ?? "")
+                    Session.shared.sucess = result!.success
+                    self.coordinatorDelegate?.didLogin()
                 }
             }
         }
@@ -53,15 +53,13 @@ class LoginViewModel {
     
     func createSessionForLogin(requestToken: String) {
         let params: [String: String] = ["request_token":requestToken]
-        print(params)
-        
         service.createSession(endPoint: .urlGetSession, params: params, type: SessionInfo.self) { (result, error) in
-            if error != nil {
+            if let error = error {
                 print("error")
+                self.delegate?.erroLogin(error: error)
             } else {
                 if result != nil {
-                    print("session request is sucess")
-                    print(result ?? "")
+                    Session.shared.sessionId = result!.sessionId
                 }
             }
         }

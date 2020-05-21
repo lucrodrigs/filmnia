@@ -153,15 +153,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: HomeViewDelegate, DetailsSelectDelegate {
     
-    func televisonSelected(televison: Television) {
-        delegate?.televisonSelected(televison: televison)
+    func televisonSelected(televison: Television, flux: Flux) {
+        delegate?.televisonSelected(televison: televison, flux: flux)
     }
     
-    func movieSelected(movie: Movies) {
-        delegate?.movieSelected(movie: movie)
+    func movieSelected(movie: Movies, flux: Flux) {
+        delegate?.movieSelected(movie: movie, flux: flux)
     }
     
-    func showImagePosters(resultPoster: ContentSection) {
+    func showImagePosters(resultPoster: EnumerateSection.ContentSection) {
         
             switch resultPoster {
             case .moviesPopular(let result):

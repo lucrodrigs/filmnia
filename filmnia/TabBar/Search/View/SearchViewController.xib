@@ -23,9 +23,8 @@
                     <rect key="frame" x="5" y="59" width="404" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0u1-hE-zM9">
-                    <rect key="frame" x="5" y="124" width="404" height="738"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0u1-hE-zM9">
+                    <rect key="frame" x="10" y="125" width="394" height="737"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2yf-VN-oWd">
                         <size key="itemSize" width="50" height="50"/>
@@ -37,9 +36,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="0u1-hE-zM9" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="ADV-Cn-cHD"/>
+                <constraint firstItem="0u1-hE-zM9" firstAttribute="top" secondItem="et1-PG-cgu" secondAttribute="bottom" constant="10" id="AOl-8r-kCJ"/>
                 <constraint firstItem="et1-PG-cgu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="BQG-8Y-XJQ"/>
+                <constraint firstItem="0u1-hE-zM9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="LBi-Ty-dNr"/>
                 <constraint firstItem="et1-PG-cgu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="dPY-qo-y0g"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="et1-PG-cgu" secondAttribute="trailing" constant="5" id="gqT-gC-fb4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0u1-hE-zM9" secondAttribute="trailing" constant="10" id="tVW-aK-hSK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>

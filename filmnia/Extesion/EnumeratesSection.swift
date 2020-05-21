@@ -12,7 +12,7 @@ import UIKit
 typealias CollectionSection = EnumerateSection.Section
 
 class EnumerateSection {
-
+    
     enum Section: Int, CaseIterable {
         case popular = 0
         case upComing
@@ -28,7 +28,7 @@ class EnumerateSection {
                 return " Now Playing Movies"
             }
         }
-
+        
         var titleSectionsTelevision: String {
             switch self {
             case .popular:
@@ -39,7 +39,7 @@ class EnumerateSection {
                 return " On The Air "
             }
         }
-
+        
         var height: CGFloat {
             switch self {
             case .popular:
@@ -48,7 +48,7 @@ class EnumerateSection {
                 return 187
             }
         }
-
+        
         var sizeCollectionCell: CGSize {
             switch self {
             case .popular:
@@ -57,12 +57,26 @@ class EnumerateSection {
                 return CGSize(width: 168*3/4, height: height)
             }
         }
-
+        
     }
     
     enum FormatStyle: String {
         case longDateDetail = "dd 'de' MMMM 'de' yyyy"
         case monthAndYearName = "MMMM yyyy"
     }
+    
+    enum ContentSection {
+        case moviesPopular(ResultsMovies)
+        case moviesUpComing(ResultsMovies)
+        case moviesNowPlaying(ResultsMovies)
+        case televisionPopular(ResultsTelevision)
+        case televisionTopRated(ResultsTelevision)
+        case televisionOnTheAir(ResultsTelevision)
+    }
+    
+}
 
+enum MediaType: String, Codable {
+    case television
+    case movie
 }

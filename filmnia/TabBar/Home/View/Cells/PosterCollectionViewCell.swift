@@ -10,8 +10,6 @@ import UIKit
 
 class PosterCollectionViewCell: UICollectionViewCell {
     
-    var showImage = ResultsMovies(results: [])
-    
     @IBOutlet weak var posterImage: UIImageView!
     
     override func awakeFromNib() {

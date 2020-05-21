@@ -11,6 +11,7 @@ import UIKit
 enum Flux {
     case home
     case search
+    case profile
 }
 
 class AppCoordinator {
@@ -20,20 +21,28 @@ class AppCoordinator {
     var navigation: FNavigationViewController?
     var searchNavigation: FNavigationViewController?
     var homeNavigation: FNavigationViewController?
+    var profileNavigation: FNavigationViewController?
     
     init(window: UIWindow) {
         self.window = window
         viewTabBar = FTabBarViewController()
         viewTabBar.view.backgroundColor = .blue
-        window.rootViewController = viewTabBar
-        window.makeKeyAndVisible()
     }
     
     func start() {
-        viewTabBar.viewControllers = [initTabBarHome(),
-                                      initTabBarSearch(),
-                                      initTabBarProfile()]
+        if Session.shared.sucess {
+            window.rootViewController = viewTabBar
+            viewTabBar.viewControllers = [initTabBarHome(),
+                                          initTabBarSearch(),
+                                          initTabBarProfile(model: DetailsProfile())]
+        } else {
+            let login = LoginViewController()
+            window.rootViewController = login
+            login.viewModel.coordinatorDelegate = self
+        }
+        window.makeKeyAndVisible()
     }
+    
     
     func initTabBarHome() -> FNavigationViewController {
         let tabView = HomeViewController()
@@ -41,8 +50,7 @@ class AppCoordinator {
         let navigation = FNavigationViewController(rootViewController: tabView)
         navigation.tabBarItem.image = UIImage(systemName: "house.fill")
         navigation.tabBarItem.title = "Home"
-        //homeNavigation = navigation
-        self.navigation = navigation
+        homeNavigation = navigation
         return navigation
     }
     
@@ -56,36 +64,63 @@ class AppCoordinator {
         return navigation
     }
     
-    func initTabBarProfile() -> FNavigationViewController {
-        let tabView = ProfileViewController()
+    func initTabBarProfile(model: DetailsProfile) -> FNavigationViewController {
+        let viewModel = ProfileViewModel(profile: model)
+        let tabView = ProfileViewController(viewModel: viewModel)
+        tabView.didSelectDelegate = self
         let navigation = FNavigationViewController(rootViewController: tabView)
         navigation.tabBarItem.image = UIImage(systemName: "person.fill")
         navigation.tabBarItem.title = "Profile"
+        profileNavigation = navigation
         return navigation
     }
     
-    func detailsMovieViewControler(model: Movies/*, flux: Flux*/) {
+    func detailsMovieViewController(model: Movies, flux: Flux) {
         let viewModel = DetailsViewModel(movies: model)
         let detailsView = DetailsViewController(viewModel: viewModel)
-        navigation?.pushViewController(detailsView, animated: true)
+        
+        switch flux {
+        case .home:
+            homeNavigation?.pushViewController(detailsView, animated: true)
+        case .search:
+            searchNavigation?.pushViewController(detailsView, animated: true)
+        case .profile:
+            profileNavigation?.pushViewController(detailsView, animated: true)
+        }
     }
     
-    func detailsTelevisionViewControler(model: Television) {
+    func detailsTelevisionViewController(model: Television, flux: Flux) {
         let viewModel = DetailsTelevisionViewModel(television: model)
         let detailsView = DetailsTelevisionViewController(viewModel: viewModel)
-        navigation?.pushViewController(detailsView, animated: true)
+        
+        switch flux {
+        case .home:
+            homeNavigation?.pushViewController(detailsView, animated: true)
+        case .search:
+            searchNavigation?.pushViewController(detailsView, animated: true)
+        case .profile:
+            profileNavigation?.pushViewController(detailsView, animated: true)
+        }
     }
     
 }
- 
+
 extension AppCoordinator: DetailsSelectDelegate {
     
-    func televisonSelected(televison: Television) {
-        detailsTelevisionViewControler(model: televison)
+    func televisonSelected(televison: Television, flux: Flux) {
+        detailsTelevisionViewController(model: televison, flux: flux)
     }
     
-    func movieSelected(movie: Movies/*, flux: Flux*/) {
-        detailsMovieViewControler(model: movie/*, flux: flux*/)
+    func movieSelected(movie: Movies, flux: Flux) {
+        detailsMovieViewController(model: movie, flux: flux)
+    }
+    
+}
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    
+    func didLogin() {
+        start()
     }
     
 }

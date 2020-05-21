@@ -8,7 +8,7 @@
 
 import UIKit
 
-//SectionsTableViewCell
+//renomear para SectionsTableViewCell
 
 class TableViewCell: UITableViewCell {
     
@@ -111,10 +111,10 @@ extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, U
         switch homeView?.segmentedControl?.selectedSegmentIndex {
         case 0:
             guard let movies = resultsRequestMovie?.results[indexPath.row] else { return }
-            delegate?.movieSelected(movie: movies)
+            delegate?.movieSelected(movie: movies, flux: .home)
         case 1:
             guard let television = resultsRequestTelevison?.results[indexPath.row] else { return }
-            delegate?.televisonSelected(televison: television)
+            delegate?.televisonSelected(televison: television, flux: .home)
         default:
             break
         }

@@ -28,12 +28,14 @@
 		BD5E9DD523FD7E350013C4C0 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5E9DD423FD7E350013C4C0 /* UIImage.swift */; };
 		BDADB3922406DF7D001A94A7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADB3902406DF7D001A94A7 /* TableViewCell.swift */; };
 		BDADB3932406DF7D001A94A7 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDADB3912406DF7D001A94A7 /* TableViewCell.xib */; };
+		DD974576246B097400BF5453 /* YourlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD974574246B097400BF5453 /* YourlistViewController.swift */; };
+		DD974577246B097400BF5453 /* YourlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD974575246B097400BF5453 /* YourlistViewController.xib */; };
+		DD97457B246B09A200BF5453 /* YourlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97457A246B09A200BF5453 /* YourlistViewModel.swift */; };
+		DD97457E246B1BD800BF5453 /* YourlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97457C246B1BD800BF5453 /* YourlistTableViewCell.swift */; };
+		DD97457F246B1BD800BF5453 /* YourlistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD97457D246B1BD800BF5453 /* YourlistTableViewCell.xib */; };
 		DDA5648F243278F30064C7A6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA5648E243278F30064C7A6 /* SearchViewModel.swift */; };
 		DDA564982434FA8B0064C7A6 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564962434FA8B0064C7A6 /* SearchCollectionViewCell.swift */; };
 		DDA564992434FA8B0064C7A6 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA564972434FA8B0064C7A6 /* SearchCollectionViewCell.xib */; };
-		DDA564A12439469B0064C7A6 /* WatchedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564A02439469B0064C7A6 /* WatchedViewModel.swift */; };
-		DDA564A4243948860064C7A6 /* WatchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564A2243948860064C7A6 /* WatchedViewController.swift */; };
-		DDA564A5243948860064C7A6 /* WatchedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA564A3243948860064C7A6 /* WatchedViewController.xib */; };
 		DDA564B724468BE30064C7A6 /* DetailsTelevisionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564B624468BE30064C7A6 /* DetailsTelevisionViewModel.swift */; };
 		DDA564BA2447308C0064C7A6 /* DetailsTelevisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564B82447308C0064C7A6 /* DetailsTelevisionViewController.swift */; };
 		DDA564BB2447308C0064C7A6 /* DetailsTelevisionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA564B92447308C0064C7A6 /* DetailsTelevisionViewController.xib */; };
@@ -44,7 +46,6 @@
 		DDA564CE244DF25B0064C7A6 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDA564CD244DF25B0064C7A6 /* Gilroy-ExtraBold.otf */; };
 		DDA564D0244DF2630064C7A6 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDA564CF244DF2630064C7A6 /* Gilroy-Light.otf */; };
 		DDA564D2244E03270064C7A6 /* Gilroy-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DDA564D1244E03270064C7A6 /* Gilroy-SemiBold.otf */; };
-		DDA564D5244F6ED30064C7A6 /* WatchlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564D4244F6ED30064C7A6 /* WatchlistViewModel.swift */; };
 		DDA564DC244F6FBA0064C7A6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564DA244F6FBA0064C7A6 /* LoginViewController.swift */; };
 		DDA564DD244F6FBA0064C7A6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA564DB244F6FBA0064C7A6 /* LoginViewController.xib */; };
 		DDA564DF244F6FCD0064C7A6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564DE244F6FCD0064C7A6 /* LoginViewModel.swift */; };
@@ -56,8 +57,8 @@
 		DDC45173241FC522001EA41A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC45171241FC522001EA41A /* ProfileViewController.xib */; };
 		DDC4517A241FC8DF001EA41A /* RecomendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC45178241FC8DF001EA41A /* RecomendationCollectionViewCell.swift */; };
 		DDC4517B241FC8DF001EA41A /* RecomendationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC45179241FC8DF001EA41A /* RecomendationCollectionViewCell.xib */; };
-		DDC4517F241FEE12001EA41A /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4517D241FEE12001EA41A /* WatchlistViewController.swift */; };
-		DDC45180241FEE12001EA41A /* WatchlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC4517E241FEE12001EA41A /* WatchlistViewController.xib */; };
+		DDF2653224685EF300779D6B /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2653024685EF300779D6B /* ProfileCollectionViewCell.swift */; };
+		DDF2653324685EF300779D6B /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF2653124685EF300779D6B /* ProfileCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,12 +85,14 @@
 		BD5E9DD423FD7E350013C4C0 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BDADB3902406DF7D001A94A7 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BDADB3912406DF7D001A94A7 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		DD974574246B097400BF5453 /* YourlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistViewController.swift; sourceTree = "<group>"; };
+		DD974575246B097400BF5453 /* YourlistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourlistViewController.xib; sourceTree = "<group>"; };
+		DD97457A246B09A200BF5453 /* YourlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistViewModel.swift; sourceTree = "<group>"; };
+		DD97457C246B1BD800BF5453 /* YourlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistTableViewCell.swift; sourceTree = "<group>"; };
+		DD97457D246B1BD800BF5453 /* YourlistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourlistTableViewCell.xib; sourceTree = "<group>"; };
 		DDA5648E243278F30064C7A6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		DDA564962434FA8B0064C7A6 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDA564972434FA8B0064C7A6 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
-		DDA564A02439469B0064C7A6 /* WatchedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedViewModel.swift; sourceTree = "<group>"; };
-		DDA564A2243948860064C7A6 /* WatchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedViewController.swift; sourceTree = "<group>"; };
-		DDA564A3243948860064C7A6 /* WatchedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchedViewController.xib; sourceTree = "<group>"; };
 		DDA564B624468BE30064C7A6 /* DetailsTelevisionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTelevisionViewModel.swift; sourceTree = "<group>"; };
 		DDA564B82447308C0064C7A6 /* DetailsTelevisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTelevisionViewController.swift; sourceTree = "<group>"; };
 		DDA564B92447308C0064C7A6 /* DetailsTelevisionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTelevisionViewController.xib; sourceTree = "<group>"; };
@@ -100,7 +103,6 @@
 		DDA564CD244DF25B0064C7A6 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		DDA564CF244DF2630064C7A6 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		DDA564D1244E03270064C7A6 /* Gilroy-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.otf"; sourceTree = "<group>"; };
-		DDA564D4244F6ED30064C7A6 /* WatchlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewModel.swift; sourceTree = "<group>"; };
 		DDA564DA244F6FBA0064C7A6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DDA564DB244F6FBA0064C7A6 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		DDA564DE244F6FCD0064C7A6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -112,8 +114,8 @@
 		DDC45171241FC522001EA41A /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		DDC45178241FC8DF001EA41A /* RecomendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		DDC45179241FC8DF001EA41A /* RecomendationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecomendationCollectionViewCell.xib; sourceTree = "<group>"; };
-		DDC4517D241FEE12001EA41A /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
-		DDC4517E241FEE12001EA41A /* WatchlistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchlistViewController.xib; sourceTree = "<group>"; };
+		DDF2653024685EF300779D6B /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDF2653124685EF300779D6B /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,10 +148,12 @@
 		BD5E9D3B23FB0F550013C4C0 /* filmnia */ = {
 			isa = PBXGroup;
 			children = (
-				DDA564D7244F6F950064C7A6 /* Login */,
 				BD5E9DAB23FC60FB0013C4C0 /* Coordinator */,
 				DDA564C7244B29A70064C7A6 /* Protocols */,
+				DDA564D7244F6F950064C7A6 /* Login */,
 				BD5E9D7823FB1D300013C4C0 /* TabBar */,
+				DD974573246B092B00BF5453 /* Lists */,
+				DDC451662413C195001EA41A /* Details */,
 				BD5E9D7023FB15DA0013C4C0 /* Api */,
 				BD5E9D7523FB1CFD0013C4C0 /* Extesion */,
 				BD5E9D4223FB0F550013C4C0 /* Main.storyboard */,
@@ -190,12 +194,9 @@
 				BD5E9DA923FC57250013C4C0 /* FTabBarViewController.swift */,
 				BD5E9D9F23FC4C870013C4C0 /* FNavigationViewController.swift */,
 				BD5E9DA023FC4C870013C4C0 /* FNavigationViewController.xib */,
-				DDA5649A2439465A0064C7A6 /* Watched */,
-				DDC4517C241FEDF0001EA41A /* Watchlist */,
 				DDC4516F241FC50B001EA41A /* Profile */,
 				BD5E9D8223FC05C60013C4C0 /* Search */,
 				BD5E9D8323FC05CD0013C4C0 /* Home */,
-				DDC451662413C195001EA41A /* Details */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -254,6 +255,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		DD974573246B092B00BF5453 /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				DD974579246B098400BF5453 /* View */,
+				DD974578246B098100BF5453 /* ViewModel */,
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		DD974578246B098100BF5453 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD974574246B097400BF5453 /* YourlistViewController.swift */,
+				DD974575246B097400BF5453 /* YourlistViewController.xib */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DD974579246B098400BF5453 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD97457A246B09A200BF5453 /* YourlistViewModel.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DDA56490243279080064C7A6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,24 +296,6 @@
 				DDA564972434FA8B0064C7A6 /* SearchCollectionViewCell.xib */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		DDA5649A2439465A0064C7A6 /* Watched */ = {
-			isa = PBXGroup;
-			children = (
-				DDA564D3244F6EA90064C7A6 /* ViewModel */,
-				DDA5649F243946820064C7A6 /* View */,
-			);
-			path = Watched;
-			sourceTree = "<group>";
-		};
-		DDA5649F243946820064C7A6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DDA564A2243948860064C7A6 /* WatchedViewController.swift */,
-				DDA564A3243948860064C7A6 /* WatchedViewController.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		DDA564A6243CAFD60064C7A6 /* ViewModel */ = {
@@ -357,14 +366,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		DDA564D3244F6EA90064C7A6 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				DDA564A02439469B0064C7A6 /* WatchedViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		DDA564D7244F6F950064C7A6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +427,7 @@
 			children = (
 				DDC45170241FC522001EA41A /* ProfileViewController.swift */,
 				DDC45171241FC522001EA41A /* ProfileViewController.xib */,
+				DDF2652F24685E9500779D6B /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -456,30 +458,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		DDC4517C241FEDF0001EA41A /* Watchlist */ = {
+		DDF2652F24685E9500779D6B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DDC45182241FEE2B001EA41A /* ViewModel */,
-				DDC45181241FEE1C001EA41A /* View */,
+				DDF2653024685EF300779D6B /* ProfileCollectionViewCell.swift */,
+				DDF2653124685EF300779D6B /* ProfileCollectionViewCell.xib */,
+				DD97457C246B1BD800BF5453 /* YourlistTableViewCell.swift */,
+				DD97457D246B1BD800BF5453 /* YourlistTableViewCell.xib */,
 			);
-			path = Watchlist;
-			sourceTree = "<group>";
-		};
-		DDC45181241FEE1C001EA41A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DDC4517D241FEE12001EA41A /* WatchlistViewController.swift */,
-				DDC4517E241FEE12001EA41A /* WatchlistViewController.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		DDC45182241FEE2B001EA41A /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				DDA564D4244F6ED30064C7A6 /* WatchlistViewModel.swift */,
-			);
-			path = ViewModel;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -546,14 +533,15 @@
 				DDA564DD244F6FBA0064C7A6 /* LoginViewController.xib in Resources */,
 				DDA564CE244DF25B0064C7A6 /* Gilroy-ExtraBold.otf in Resources */,
 				DDA564D2244E03270064C7A6 /* Gilroy-SemiBold.otf in Resources */,
-				DDC45180241FEE12001EA41A /* WatchlistViewController.xib in Resources */,
 				DDA564BB2447308C0064C7A6 /* DetailsTelevisionViewController.xib in Resources */,
 				BD5E9D4923FB0F5B0013C4C0 /* LaunchScreen.storyboard in Resources */,
-				DDA564A5243948860064C7A6 /* WatchedViewController.xib in Resources */,
 				BD5E9D4623FB0F5B0013C4C0 /* Assets.xcassets in Resources */,
 				BD5E9DB723FC7D000013C4C0 /* SearchViewController.xib in Resources */,
 				BD5E9DA223FC4C870013C4C0 /* FNavigationViewController.xib in Resources */,
+				DD974577246B097400BF5453 /* YourlistViewController.xib in Resources */,
+				DD97457F246B1BD800BF5453 /* YourlistTableViewCell.xib in Resources */,
 				BD5E9D4423FB0F550013C4C0 /* Main.storyboard in Resources */,
+				DDF2653324685EF300779D6B /* ProfileCollectionViewCell.xib in Resources */,
 				DDA564D0244DF2630064C7A6 /* Gilroy-Light.otf in Resources */,
 				DDC4517B241FC8DF001EA41A /* RecomendationCollectionViewCell.xib in Resources */,
 				BD5E9DCC23FD6AFE0013C4C0 /* HomeViewController.xib in Resources */,
@@ -571,18 +559,16 @@
 			files = (
 				BD5E9D9B23FC4A1E0013C4C0 /* AppCoordinator.swift in Sources */,
 				BDADB3922406DF7D001A94A7 /* TableViewCell.swift in Sources */,
-				DDA564D5244F6ED30064C7A6 /* WatchlistViewModel.swift in Sources */,
 				DDA564982434FA8B0064C7A6 /* SearchCollectionViewCell.swift in Sources */,
 				DDA564C4244A2A5E0064C7A6 /* ProfileViewModel.swift in Sources */,
+				DD97457E246B1BD800BF5453 /* YourlistTableViewCell.swift in Sources */,
 				DDA564E22454C8FE0064C7A6 /* EnumeratesSection.swift in Sources */,
 				BD5E9D3D23FB0F550013C4C0 /* AppDelegate.swift in Sources */,
-				DDA564A12439469B0064C7A6 /* WatchedViewModel.swift in Sources */,
 				BD5E9D7223FB1CD20013C4C0 /* RequestApi.swift in Sources */,
 				BD5E9DA123FC4C870013C4C0 /* FNavigationViewController.swift in Sources */,
 				DDA5648F243278F30064C7A6 /* SearchViewModel.swift in Sources */,
 				DDC45172241FC522001EA41A /* ProfileViewController.swift in Sources */,
 				BD5E9DCF23FD6BA00013C4C0 /* PosterCollectionViewCell.swift in Sources */,
-				DDC4517F241FEE12001EA41A /* WatchlistViewController.swift in Sources */,
 				DDC4517A241FC8DF001EA41A /* RecomendationCollectionViewCell.swift in Sources */,
 				DDA564B724468BE30064C7A6 /* DetailsTelevisionViewModel.swift in Sources */,
 				BD5E9DC423FC851F0013C4C0 /* HomeViewModel.swift in Sources */,
@@ -591,15 +577,17 @@
 				DDA564C6244A51780064C7A6 /* SceneDelegate.swift in Sources */,
 				DDA564DC244F6FBA0064C7A6 /* LoginViewController.swift in Sources */,
 				BD5E9D7423FB1CE60013C4C0 /* ResultsRequest.swift in Sources */,
+				DD974576246B097400BF5453 /* YourlistViewController.swift in Sources */,
 				DDC4516E2416DCBD001EA41A /* DetailsViewModel.swift in Sources */,
 				DDA564BA2447308C0064C7A6 /* DetailsTelevisionViewController.swift in Sources */,
-				DDA564A4243948860064C7A6 /* WatchedViewController.swift in Sources */,
+				DDF2653224685EF300779D6B /* ProfileCollectionViewCell.swift in Sources */,
 				DDC451632412EE22001EA41A /* DetailsViewController.swift in Sources */,
 				DDA564BE2447ACB20064C7A6 /* TaskExecutor.swift in Sources */,
 				DDA564C9244B29D50064C7A6 /* Protocols.swift in Sources */,
 				BD5E9DAA23FC57250013C4C0 /* FTabBarViewController.swift in Sources */,
 				BD5E9DB623FC7D000013C4C0 /* SearchViewController.swift in Sources */,
 				BD5E9D7723FB1D1B0013C4C0 /* UIColors.swift in Sources */,
+				DD97457B246B09A200BF5453 /* YourlistViewModel.swift in Sources */,
 				BD5E9DD523FD7E350013C4C0 /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

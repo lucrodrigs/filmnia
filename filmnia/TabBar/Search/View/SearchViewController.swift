@@ -78,29 +78,30 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell
+        
         if let result = resultsRequest {
             cell?.cellPosterPath(dataMovie: result.results[indexPath.row])
         }
+        
         return cell ?? UICollectionViewCell()
     }
-    //aqui
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let movies = resultsRequest?.results[indexPath.row] else { return }
-        delegate?.movieSelected(movie: movies)
+        delegate?.movieSelected(movie: movies, flux: .search)
     }
     
 }
 
 extension SearchViewController: SearchViewDelegate, DetailsSelectDelegate {
     
-    func movieSelected(movie: Movies) {
-        delegate?.movieSelected(movie: movie)
+    func movieSelected(movie: Movies, flux: Flux) {
+        delegate?.movieSelected(movie: movie, flux: flux)
     }
     
-    func televisonSelected(televison: Television) {
-        delegate?.televisonSelected(televison: televison)
+    func televisonSelected(televison: Television, flux: Flux) {
+        delegate?.televisonSelected(televison: televison, flux: flux)
     }
-    
     
     func showImagePosters(resultPoster: ResultsMovies) {
         resultsRequest = resultPoster

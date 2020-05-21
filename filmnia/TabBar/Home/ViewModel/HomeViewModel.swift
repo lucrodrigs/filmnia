@@ -8,15 +8,6 @@
 
 import Foundation
 
-enum ContentSection {
-    case moviesPopular(ResultsMovies)
-    case moviesUpComing(ResultsMovies)
-    case moviesNowPlaying(ResultsMovies)
-    case televisionPopular(ResultsTelevision)
-    case televisionTopRated(ResultsTelevision)
-    case televisionOnTheAir(ResultsTelevision)
-}
-
 class HomeViewModel {
     
     var delegate: HomeViewDelegate?

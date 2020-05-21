@@ -56,6 +56,37 @@ struct Television: Codable {
     }
 }
 
+//MARK: - general
+struct ResultsGeneral: Codable {
+    var results: [ResultsAllType]
+}
+
+struct ResultsAllType: Codable {
+    let id: Int?
+    let title: String?
+    let name: String?
+    let posterPath: String?
+    let overview: String?
+    let releaseDate: String?
+    let firstAirDate: String?
+    let page: Int?
+    let voteAverage: Float?
+    var type: MediaType?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case name
+        case posterPath = "poster_path"
+        case overview
+        case releaseDate = "release_date"
+        case firstAirDate = "first_air_date"
+        case page
+        case voteAverage = "vote_average"
+        case type
+    }
+}
+
 //MARK: - DetailsMovie
 struct DetailsMovie: Codable {
     let adult: Bool
@@ -126,5 +157,58 @@ struct SessionInfo: Codable {
     enum CodingKeys: String, CodingKey {
         case success
         case sessionId = "session_id"
+    }
+}
+
+class Session {
+    static let shared = Session()
+    var sessionId = ""
+    var sucess = false
+}
+
+//MARK: - DetailsProfile
+struct DetailsProfile: Codable {
+    var avatar: Avatar?
+    var id: Int?
+    var name: String?
+    var username: String?
+
+    enum CodingKeys: String, CodingKey {
+        case avatar
+        case id
+        case name
+        case username
+    }
+}
+
+class Account {
+    static let shared = Account()
+    var accountId: Int = 0
+}
+
+struct Avatar: Codable {
+    let gravatar: Gravatar?
+}
+
+struct Gravatar: Codable {
+    let hash: String?
+}
+
+//MARK: - DetailsListAccount
+struct ResultList: Codable {
+    let results: [List]
+}
+
+struct List: Codable {
+    let name: String?
+    let resultDescription: String?
+    let id: Int?
+    let itensCount: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case resultDescription = "description"
+        case id
+        case itensCount = "item_count"
     }
 }

@@ -26,6 +26,12 @@ enum EndPoints: String {
     case urlGetToken = "/authentication/token/new"
     case urlValidateLoginAcess = "/authentication/token/validate_with_login"
     case urlGetSession = "/authentication/session/new"
+    case urlGetDetailProfile = "/account"
+    case urlGetFavoritesMovies = "/favorite/movies"
+    case urlGetFavoritesTelevision = "/favorite/tv"
+    case urlGetWatchedlistMovies = "/watchlist/movies"
+    case urlGetWatchedlistTelevision = "/watchlist/tv"
+    case urlGetYourlist = "/lists"
     case urlSearch = "/search/movie"
     case urlPopularMovie = "/movie/popular"
     case urlUpComingMovie = "/movie/upcoming"
@@ -248,7 +254,7 @@ class HTTPRequest {
                         completion(response, nil)
                     }
                 } catch {
-                    print("ERROR in JSON: JSONSerialization")
+                    print("ERROR in JSON1: JSONSerialization")
                     print(error)
                     print(String.init(data: data, encoding: .utf8) ?? "")
                 }
@@ -293,29 +299,139 @@ class HTTPRequest {
         }
     }
     
-//    func printJsonData(data: Data) {
-//        do {
-//            if let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) {
-//                let result = try? JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted)
-//                if let result = result, let dataString = String(data: result, encoding: .utf8) {
-//                    print(dataString)
-//                }
-//            }
-//        }
-//    }
+    func getProfile<T: Decodable>(endPoint: EndPoints, idSession: String, type: T.Type, completion: @escaping (_ result: T?,_ error: Error?) -> Void) {
+        
+        guard let urlRequest = URL(string: Constants.urlBase + endPoint.rawValue + Constants.apiKey + "session_id=" + idSession.description) else {
+            print("fatalERROR")
+            return
+        }
+        
+        var request = URLRequest(url: urlRequest)
+        request.httpMethod = Constants.httpMethodGet
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        task.execute(url: request) { data, response, error in
+            if error != nil {
+                print("fatalERROR in request")
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            if let data = data {
+                do {
+                    
+                    let response = try JSONDecoder().decode(T.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(response, nil)
+                    }
+                } catch {
+                    print("ERROR in JSON: JSONSerialization")
+                    print(error)
+                    print(String.init(data: data, encoding: .utf8) ?? "")
+                }
+            }
+        }
+    }
+    
+    func getOptionalsProfile<T: Decodable>(endPoint: EndPoints, idSession: String, idAccount: Int, type: T.Type, completion: @escaping (_ result: T?,_ error: Error?) -> Void) {
+        
+        guard let urlRequest = URL(string: Constants.urlBase + "/account/" + idAccount.description + endPoint.rawValue + Constants.apiKey + "session_id=" + idSession.description) else {
+            print("fatalERROR")
+            return
+        }
+        
+        var request = URLRequest(url: urlRequest)
+        request.httpMethod = Constants.httpMethodGet
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        task.execute(url: request) { data, response, error in
+            if error != nil {
+                print("fatalERROR in request")
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            if let data = data {
+                do {
+                    let response = try JSONDecoder().decode(T.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(response, nil)
+                    }
+                } catch {
+                    print("ERROR in JSON: JSONSerialization")
+                    print(error)
+                    print(String.init(data: data, encoding: .utf8) ?? "")
+                }
+            }
+        }
+    }
+    
+    func getListsAccount<T: Decodable>(endPoint: EndPoints, idSession: String, idAccount: Int, type: T.Type, completion: @escaping (_ result: T?,_ error: Error?) -> Void) {
+        
+        guard let urlRequest = URL(string: Constants.urlBase + "/account/" + idAccount.description + endPoint.rawValue + Constants.apiKey + "session_id=" + idSession.description) else {
+            print("fatalERROR")
+            return
+        }
+        
+        var request = URLRequest(url: urlRequest)
+        request.httpMethod = Constants.httpMethodGet
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        task.execute(url: request) { data, response, error in
+            if error != nil {
+                print("fatalERROR in request")
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            if let data = data {
+                do {
+                    
+                    let response = try JSONDecoder().decode(T.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(response, nil)
+                    }
+                } catch {
+                    print("ERROR in JSON List ACCOUNT: JSONSerialization")
+                    print(error)
+                    print(String.init(data: data, encoding: .utf8) ?? "")
+                }
+            }
+        }
+    }
+    
+    func getDetailsUYourlists<T: Decodable>(endPoint: EndPoints, idList: Int, type: T.Type, completion: @escaping (_ result: T?,_ error: Error?) -> Void) {
+        
+        guard let urlRequest = URL(string: Constants.urlBase + endPoint.rawValue + "/" + idList.description + Constants.apiKey) else {
+            print("fatalERROR")
+            return
+        }
+        
+        var request = URLRequest(url: urlRequest)
+        request.httpMethod = Constants.httpMethodGet
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        task.execute(url: request) { data, response, error in
+            if error != nil {
+                print("fatalERROR in request")
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            if let data = data {
+                do {
+                    
+                    let response = try JSONDecoder().decode(T.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(response, nil)
+                    }
+                } catch {
+                    print("ERROR in JSON List: JSONSerialization")
+                    print(error)
+                    print(String.init(data: data, encoding: .utf8) ?? "")
+                }
+            }
+        }
+    }
     
 }
-
-//extension Data {
-//    func toString() -> String? {
-//        return String(data: self, encoding: .utf8)
-//    }
-//}
-
-//extension URLRequest {
-//    func log() {
-//        print("\(httpMethod ?? "") \(self)")
-//        print("BODY \n \(String(describing: httpBody?.toString()))")
-//        print("HEADERS \n \(String(describing: allHTTPHeaderFields))")
-//    }
-//}

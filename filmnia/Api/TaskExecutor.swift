@@ -18,6 +18,7 @@ extension TaskExecutor {
         let task = URLSession.shared.dataTask(with: url, completionHandler: completionHandler)
         task.resume()
     }
+    
 }
 
 class Executor: TaskExecutor {}

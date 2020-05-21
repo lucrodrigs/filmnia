@@ -11,8 +11,6 @@ import UIKit
 class SearchCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
-    
-    var showImage = ResultsMovies(results: [])
 
     override func awakeFromNib() {
         super.awakeFromNib()

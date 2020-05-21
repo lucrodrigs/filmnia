@@ -148,17 +148,15 @@ class DetailsTelevisionViewController: UIViewController {
     }
     
     func overview() {
-        let overview = viewModel.television.overview
         overviewTelevision?.font = UIFont(name: "Gilroy-Light", size: overviewTelevision?.font.pointSize ?? 12)
         overviewTelevision?.textColor = .white
-        overviewTelevision?.text = overview
+        overviewTelevision?.text = viewModel.television.overview
     }
     
     func titleRecommendations() {
-        let recommendations = viewModel.television.name
         recommendationTitle?.font = UIFont(name: "Gilroy-SemiBold", size: recommendationTitle?.font.pointSize ?? 17)
         recommendationTitle?.textColor = .white
-        recommendationTitle?.text = "Recommendations for " + recommendations
+        recommendationTitle?.text = "Recommendations for " + viewModel.television.name
     }
     
     func closeDetails() {

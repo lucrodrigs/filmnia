@@ -8,17 +8,26 @@
 
 import Foundation
 
+protocol LoginCoordinatorDelegate: AnyObject {
+    func didLogin()
+}
+
+protocol LoginViewDelegate: AnyObject {
+    func erroLogin(error: Error)
+}
+
 protocol HomeViewDelegate {
-    func showImagePosters(resultPoster: ContentSection)
+    func showImagePosters(resultPoster: EnumerateSection.ContentSection)
 }
 
 protocol SearchViewDelegate {
     func showImagePosters(resultPoster: ResultsMovies)
 }
 
-protocol DetailsSelectDelegate {
-    func movieSelected(movie: Movies/*, flux: Flux*/)
-    func televisonSelected(televison: Television)
+protocol ProfileViewDelegate {
+    func showImagePosters(resultPoster: ResultsGeneral)
+    func detailsProfile()
+    func showLists(list: ResultList)
 }
 
 protocol DetailsTelevisionDelegate {
@@ -29,4 +38,9 @@ protocol DetailsTelevisionDelegate {
 protocol DetailsMovieDelegate {
     func showImagePosters(resultMovies: ResultsMovies)
     func detailsMovie()
+}
+
+protocol DetailsSelectDelegate {
+    func movieSelected(movie: Movies, flux: Flux)
+    func televisonSelected(televison: Television, flux: Flux)
 }
