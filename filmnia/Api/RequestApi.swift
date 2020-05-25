@@ -31,7 +31,8 @@ enum EndPoints: String {
     case urlGetFavoritesTelevision = "/favorite/tv"
     case urlGetWatchedlistMovies = "/watchlist/movies"
     case urlGetWatchedlistTelevision = "/watchlist/tv"
-    case urlGetYourlist = "/lists"
+    case urlGetYourlists = "/lists"
+    case urlGetDetailsList = "/list/"
     case urlSearch = "/search/movie"
     case urlPopularMovie = "/movie/popular"
     case urlUpComingMovie = "/movie/upcoming"
@@ -402,7 +403,7 @@ class HTTPRequest {
     
     func getDetailsYourlists<T: Decodable>(endPoint: EndPoints, idList: Int, type: T.Type, completion: @escaping (_ result: T?,_ error: Error?) -> Void) {
         
-        guard let urlRequest = URL(string: Constants.urlBase + endPoint.rawValue + "/" + idList.description + Constants.apiKey) else {
+        guard let urlRequest = URL(string: Constants.urlBase + endPoint.rawValue + idList.description + Constants.apiKey) else {
             print("fatalERROR")
             return
         }
@@ -411,6 +412,7 @@ class HTTPRequest {
         request.httpMethod = Constants.httpMethodGet
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         task.execute(url: request) { data, response, error in
+            print(urlRequest)
             if error != nil {
                 print("fatalERROR in request")
                 DispatchQueue.main.async {

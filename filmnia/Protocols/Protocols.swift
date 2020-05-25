@@ -41,15 +41,16 @@ protocol DetailsMovieDelegate {
 }
 
 protocol DetailsListDelegate {
-    func detailsList()
     func showImagePosters(resultPoster: DetailsList)
+    func detailsList()
 }
 
 protocol DetailsSelectDelegate {
     func movieSelected(movie: Movies, flux: Flux)
     func televisonSelected(televison: Television, flux: Flux)
+    func listSelected(list: List)
 }
 
-protocol DetailsListSelectDelegate {
-    func listSelected(list: List)
+extension DetailsSelectDelegate {
+    func listSelected(list: List) {}
 }

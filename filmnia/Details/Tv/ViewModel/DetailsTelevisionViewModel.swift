@@ -26,7 +26,7 @@ class DetailsTelevisionViewModel {
         return urlImagePoster
     }
     
-    func detailsTelevision() {
+    func getDetailsTelevision() {
         service.requestGetDetails(endPoint: .urlDetailsTelevision, id: television.id, type: DetailsTelevison.self) { (result, error) in
             if error != nil {
                     print("error")

@@ -10,7 +10,6 @@ import UIKit
 
 class YourlistTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var listPoster: UIImageView!
     @IBOutlet weak var listName: UILabel!
     @IBOutlet weak var listDescription: UILabel!
     @IBOutlet weak var listItensCount: UILabel!
@@ -18,21 +17,6 @@ class YourlistTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cornerRadiusPoster()
-    }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//    }
-    
-    func urlShowImage(path: String) {
-        if let url = URL(string: path) {
-            listPoster.downloadImage(from: url)
-        }
-    }
-    
-    func cornerRadiusPoster() {
-        listPoster.layer.cornerRadius = listPoster.frame.size.width/7.5
     }
     
     func setup(data: List) {

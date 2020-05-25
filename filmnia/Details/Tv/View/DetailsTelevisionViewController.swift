@@ -42,7 +42,7 @@ class DetailsTelevisionViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
         setupRecomendationCollectionView()
         viewModel.recomendationTelevision()
-        viewModel.detailsTelevision()
+        viewModel.getDetailsTelevision()
         viewModel.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -211,7 +211,7 @@ extension DetailsTelevisionViewController: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let television = resultsRequest?.results[indexPath.row] else { return }
         viewModel?.television = television
-        viewModel?.detailsTelevision()
+        viewModel?.getDetailsTelevision()
         viewModel.recomendationTelevision()
         collectionView.reloadData()
     }

@@ -19,7 +19,6 @@ struct Movies: Codable {
     let posterPath: String?
     let overview: String
     let releaseDate: String
-    let page: Int?
     let voteAverage: Float
     
     enum CodingKeys: String, CodingKey {
@@ -28,7 +27,6 @@ struct Movies: Codable {
         case posterPath = "poster_path"
         case overview
         case releaseDate = "release_date"
-        case page
         case voteAverage = "vote_average"
     }
 }
@@ -221,7 +219,7 @@ struct DetailsList: Codable {
     let items: [Item]
 
     enum CodingKeys: String, CodingKey {
-        case name = "created_by"
+        case name
         case description = "description"
         case id
         case items
@@ -230,7 +228,7 @@ struct DetailsList: Codable {
 
 struct Item: Codable {
     let id: Int?
-    let mediaType: String?
+    let mediaType: MediaType?
     let name: String?
     let voteAverage: Float?
     let firstAirDate: String?

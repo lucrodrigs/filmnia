@@ -12,6 +12,7 @@ enum Flux {
     case home
     case search
     case profile
+    case yourlist
 }
 
 class AppCoordinator {
@@ -86,6 +87,8 @@ class AppCoordinator {
             searchNavigation?.pushViewController(detailsView, animated: true)
         case .profile:
             profileNavigation?.pushViewController(detailsView, animated: true)
+        case .yourlist:
+            profileNavigation?.pushViewController(detailsView, animated: true)
         }
     }
     
@@ -100,18 +103,21 @@ class AppCoordinator {
             searchNavigation?.pushViewController(detailsView, animated: true)
         case .profile:
             profileNavigation?.pushViewController(detailsView, animated: true)
+        case .yourlist:
+            profileNavigation?.pushViewController(detailsView, animated: true)
         }
     }
     
     func detailsListViewController(model: List) {
         let viewModel = YourlistViewModel(list: model)
         let detailsList = YourlistViewController(viewModel: viewModel)
+        detailsList.didSelectDelegate = self
         profileNavigation?.pushViewController(detailsList, animated: true)
     }
     
 }
 
-extension AppCoordinator: DetailsSelectDelegate, DetailsListSelectDelegate {
+extension AppCoordinator: DetailsSelectDelegate {
     
     func listSelected(list: List) {
         detailsListViewController(model: list)

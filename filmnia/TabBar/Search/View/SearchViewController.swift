@@ -93,15 +93,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
 }
 
-extension SearchViewController: SearchViewDelegate, DetailsSelectDelegate {
-    
-    func movieSelected(movie: Movies, flux: Flux) {
-        delegate?.movieSelected(movie: movie, flux: flux)
-    }
-    
-    func televisonSelected(televison: Television, flux: Flux) {
-        delegate?.televisonSelected(televison: televison, flux: flux)
-    }
+extension SearchViewController: SearchViewDelegate {
     
     func showImagePosters(resultPoster: ResultsMovies) {
         resultsRequest = resultPoster

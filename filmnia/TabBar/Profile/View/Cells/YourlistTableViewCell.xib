@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="YourlistTableViewCell" customModule="filmnia" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="YourlistTableViewCell" customModule="filmnia" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9OC-o2-XMN">
-                        <rect key="frame" x="73" y="5" width="250" height="21"/>
+                        <rect key="frame" x="10" y="5" width="250" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="250" id="sWA-sN-eD1"/>
                         </constraints>
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description list" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOx-2Z-lkm">
-                        <rect key="frame" x="73" y="28" width="250" height="20.5"/>
+                        <rect key="frame" x="30" y="28" width="250" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="250" id="Iam-vY-oym"/>
                         </constraints>
@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="itens in the list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucp-jb-t9A">
-                        <rect key="frame" x="73" y="74" width="230" height="21"/>
+                        <rect key="frame" x="10" y="63.5" width="230" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="230" id="c60-7P-2Me"/>
                         </constraints>
@@ -43,33 +43,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-z0-dLq">
-                        <rect key="frame" x="1" y="6.5" width="62" height="87"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="87" id="kLE-e4-TXo"/>
-                            <constraint firstAttribute="width" constant="62" id="v2z-Th-too"/>
-                        </constraints>
-                    </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="errorTimeOut" translatesAutoresizingMaskIntoConstraints="NO" id="IUE-Gs-3yT">
-                        <rect key="frame" x="19.5" y="37.5" width="25" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="33j-GU-R6p"/>
-                            <constraint firstAttribute="width" constant="25" id="aMS-zn-vrd"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="YOx-2Z-lkm" firstAttribute="leading" secondItem="cjS-z0-dLq" secondAttribute="trailing" constant="10" id="6nZ-Mn-6eI"/>
-                    <constraint firstAttribute="bottom" secondItem="ucp-jb-t9A" secondAttribute="bottom" constant="5" id="JHX-Jw-ecK"/>
+                    <constraint firstItem="ucp-jb-t9A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Eak-nP-xtz"/>
                     <constraint firstItem="9OC-o2-XMN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Nmb-hA-oLn"/>
+                    <constraint firstItem="YOx-2Z-lkm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="PLN-Ea-Fu8"/>
                     <constraint firstItem="YOx-2Z-lkm" firstAttribute="top" secondItem="9OC-o2-XMN" secondAttribute="bottom" constant="2" id="VGw-xT-aNo"/>
-                    <constraint firstItem="cjS-z0-dLq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="afM-XV-Lfe"/>
-                    <constraint firstItem="ucp-jb-t9A" firstAttribute="leading" secondItem="cjS-z0-dLq" secondAttribute="trailing" constant="10" id="gsQ-qD-VDb"/>
-                    <constraint firstItem="cjS-z0-dLq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hkn-Vh-18d"/>
-                    <constraint firstItem="9OC-o2-XMN" firstAttribute="leading" secondItem="cjS-z0-dLq" secondAttribute="trailing" constant="10" id="oIB-pL-3us"/>
-                    <constraint firstItem="IUE-Gs-3yT" firstAttribute="centerX" secondItem="cjS-z0-dLq" secondAttribute="centerX" id="rGQ-TM-If6"/>
-                    <constraint firstItem="IUE-Gs-3yT" firstAttribute="centerY" secondItem="cjS-z0-dLq" secondAttribute="centerY" id="uLZ-kH-fTm"/>
+                    <constraint firstItem="9OC-o2-XMN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="YDU-pf-0wR"/>
+                    <constraint firstItem="ucp-jb-t9A" firstAttribute="top" secondItem="YOx-2Z-lkm" secondAttribute="bottom" constant="15" id="aIV-fD-VJ5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -77,13 +58,9 @@
                 <outlet property="listDescription" destination="YOx-2Z-lkm" id="6DI-KN-CUQ"/>
                 <outlet property="listItensCount" destination="ucp-jb-t9A" id="GQW-NN-7uA"/>
                 <outlet property="listName" destination="9OC-o2-XMN" id="oXh-6p-JPZ"/>
-                <outlet property="listPoster" destination="cjS-z0-dLq" id="VR0-cL-Hkq"/>
                 <outlet property="tableViewCell" destination="H2p-sc-9uM" id="MYP-bP-WeV"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="144.64285714285714"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="errorTimeOut" width="52" height="52"/>
-    </resources>
 </document>

@@ -70,11 +70,11 @@ class ProfileViewModel {
                     var itens: [ResultsAllType] = []
                     for item in result.results {
                         var newItem = item
-                        newItem.type = .television
+                        newItem.type = .tv
                         itens.append(newItem)
                     }
                     let newResult = ResultsGeneral(results: itens)
-                    self.returnedRequestFavorites(results: newResult, type: .television)
+                    self.returnedRequestFavorites(results: newResult, type: .tv)
                 }
             }
         }
@@ -108,18 +108,18 @@ class ProfileViewModel {
                     var itens: [ResultsAllType] = []
                     for item in result.results {
                         var newItem = item
-                        newItem.type = .television
+                        newItem.type = .tv
                         itens.append(newItem)
                     }
                     let newResult = ResultsGeneral(results: itens)
-                    self.returnedRequestFavorites(results: newResult, type: .television)
+                    self.returnedRequestFavorites(results: newResult, type: .tv)
                 }
             }
         }
     }
     
     func showYourlists() {
-        service.getListsAccount(endPoint: .urlGetYourlist, idSession: Session.shared.sessionId, idAccount: Account.shared.accountId, type: ResultList.self) { (result, error) in
+        service.getListsAccount(endPoint: .urlGetYourlists, idSession: Session.shared.sessionId, idAccount: Account.shared.accountId, type: ResultList.self) { (result, error) in
             if error != nil {
                 print("error")
             } else {
@@ -134,7 +134,7 @@ class ProfileViewModel {
     
     func returnedRequestFavorites(results: ResultsGeneral, type: MediaType) {
         switch type {
-        case .television:
+        case .tv:
             resultTelevision = results
         case .movie:
             resultMovies = results

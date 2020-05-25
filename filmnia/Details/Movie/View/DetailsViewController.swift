@@ -42,7 +42,7 @@ class DetailsViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
         setupRecomendationCollectionView()
         viewModel.recomendationMovies()
-        viewModel.detailsMovie()
+        viewModel.getDetailsMovie()
         viewModel.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -212,7 +212,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let movies = resultsRequest?.results[indexPath.row] else { return }
         viewModel.movies = movies
-        viewModel.detailsMovie()
+        viewModel.getDetailsMovie()
         viewModel.recomendationMovies()
         collectionView.reloadData()
     }

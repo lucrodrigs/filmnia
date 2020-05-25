@@ -53,6 +53,8 @@
 		DDA564DD244F6FBA0064C7A6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA564DB244F6FBA0064C7A6 /* LoginViewController.xib */; };
 		DDA564DF244F6FCD0064C7A6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564DE244F6FCD0064C7A6 /* LoginViewModel.swift */; };
 		DDA564E22454C8FE0064C7A6 /* EnumeratesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA564E12454C8FE0064C7A6 /* EnumeratesSection.swift */; };
+		DDC39937247C455F00A3A784 /* YourlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC39935247C455F00A3A784 /* YourlistCollectionViewCell.swift */; };
+		DDC39938247C455F00A3A784 /* YourlistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC39936247C455F00A3A784 /* YourlistCollectionViewCell.xib */; };
 		DDC451632412EE22001EA41A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC451612412EE22001EA41A /* DetailsViewController.swift */; };
 		DDC451642412EE22001EA41A /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC451622412EE22001EA41A /* DetailsViewController.xib */; };
 		DDC4516E2416DCBD001EA41A /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4516D2416DCBD001EA41A /* DetailsViewModel.swift */; };
@@ -113,6 +115,8 @@
 		DDA564DB244F6FBA0064C7A6 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		DDA564DE244F6FCD0064C7A6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DDA564E12454C8FE0064C7A6 /* EnumeratesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumeratesSection.swift; sourceTree = "<group>"; };
+		DDC39935247C455F00A3A784 /* YourlistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistCollectionViewCell.swift; sourceTree = "<group>"; };
+		DDC39936247C455F00A3A784 /* YourlistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourlistCollectionViewCell.xib; sourceTree = "<group>"; };
 		DDC451612412EE22001EA41A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DDC451622412EE22001EA41A /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		DDC4516D2416DCBD001EA41A /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 		DD6DB7E5247721D0006907B4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				DDC39935247C455F00A3A784 /* YourlistCollectionViewCell.swift */,
+				DDC39936247C455F00A3A784 /* YourlistCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 				BD5E9D4623FB0F5B0013C4C0 /* Assets.xcassets in Resources */,
 				BD5E9DB723FC7D000013C4C0 /* SearchViewController.xib in Resources */,
 				BD5E9DA223FC4C870013C4C0 /* FNavigationViewController.xib in Resources */,
+				DDC39938247C455F00A3A784 /* YourlistCollectionViewCell.xib in Resources */,
 				DD97457F246B1BD800BF5453 /* YourlistTableViewCell.xib in Resources */,
 				BD5E9D4423FB0F550013C4C0 /* Main.storyboard in Resources */,
 				DDF2653324685EF300779D6B /* ProfileCollectionViewCell.xib in Resources */,
@@ -617,6 +624,7 @@
 				BD5E9D3D23FB0F550013C4C0 /* AppDelegate.swift in Sources */,
 				BD5E9D7223FB1CD20013C4C0 /* RequestApi.swift in Sources */,
 				BD5E9DA123FC4C870013C4C0 /* FNavigationViewController.swift in Sources */,
+				DDC39937247C455F00A3A784 /* YourlistCollectionViewCell.swift in Sources */,
 				DDA5648F243278F30064C7A6 /* SearchViewModel.swift in Sources */,
 				DDC45172241FC522001EA41A /* ProfileViewController.swift in Sources */,
 				BD5E9DCF23FD6BA00013C4C0 /* PosterCollectionViewCell.swift in Sources */,

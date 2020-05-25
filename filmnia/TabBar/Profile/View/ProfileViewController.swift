@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     var createdlistButton: UIButton!
     var delegate: ProfileViewDelegate?
     var didSelectDelegate: DetailsSelectDelegate?
-    var didSelectListDelegate: DetailsListSelectDelegate?
+    
     var viewModel: ProfileViewModel?
     var resultsProfile: DetailsProfile?
     var resultsGeneral: ResultsGeneral?
@@ -147,18 +147,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let lists = resultsList.results[indexPath.row]
-        didSelectListDelegate?.listSelected(list: lists)
-        
-    }
-    
-}
-
-extension ProfileViewController: DetailsListSelectDelegate {
-    
-    func listSelected(list: List) {
-        didSelectListDelegate?.listSelected(list: list)
+        didSelectDelegate?.listSelected(list: lists)
     }
     
 }
@@ -191,7 +181,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
-extension ProfileViewController: ProfileViewDelegate, DetailsSelectDelegate {
+extension ProfileViewController: ProfileViewDelegate {
 
     func showLists(list: ResultList) {
         self.resultsList = list
@@ -208,19 +198,11 @@ extension ProfileViewController: ProfileViewDelegate, DetailsSelectDelegate {
         usernameProfile()
     }
     
-    func movieSelected(movie: Movies, flux: Flux) {
-        didSelectDelegate?.movieSelected(movie: movie, flux: flux)
-    }
-    
-    func televisonSelected(televison: Television, flux: Flux) {
-        didSelectDelegate?.televisonSelected(televison: televison, flux: flux)
-    }
-    
     func generalSelected(model: ResultsAllType, flux: Flux) {
         switch model.type {
         case .movie:
             didSelectDelegate?.movieSelected(movie: toMovie(model), flux: flux)
-        case .television:
+        case .tv:
             didSelectDelegate?.televisonSelected(televison: toTelevision(model), flux: flux)
         case .none: break
         }
@@ -233,7 +215,7 @@ extension ProfileViewController: ProfileViewDelegate, DetailsSelectDelegate {
     }
     
     func toMovie(_ model: ResultsAllType) -> Movies {
-        return Movies(id: model.id ?? 0, title: model.title ?? "", posterPath: model.posterPath ?? "", overview: model.overview ?? "", releaseDate: model.releaseDate ?? "", page: model.page ?? 0, voteAverage: model.voteAverage ?? 0)
+        return Movies(id: model.id ?? 0, title: model.title ?? "", posterPath: model.posterPath ?? "", overview: model.overview ?? "", releaseDate: model.releaseDate ?? "", voteAverage: model.voteAverage ?? 0)
     }
     
 }

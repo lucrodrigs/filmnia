@@ -77,6 +77,6 @@ class EnumerateSection {
 }
 
 enum MediaType: String, Codable {
-    case television
+    case tv
     case movie
 }

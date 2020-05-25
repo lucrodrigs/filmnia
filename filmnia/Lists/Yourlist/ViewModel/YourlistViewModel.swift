@@ -21,7 +21,7 @@ class YourlistViewModel {
     }
 
     func getDetailsList() {
-        service.getDetailsYourlists(endPoint: .urlGetYourlist, idList: list?.id ?? 0, type: DetailsList.self) { (result, error) in
+        service.getDetailsYourlists(endPoint: .urlGetDetailsList, idList: list?.id ?? 0, type: DetailsList.self) { (result, error) in
             if error != nil {
                 print("error")
             } else {
@@ -29,8 +29,6 @@ class YourlistViewModel {
                     self.detailslist = result
                     self.delegate?.showImagePosters(resultPoster: result)
                     self.delegate?.detailsList()
-    
-                    print(result)
                 }
             }
         }
