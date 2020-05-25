@@ -2,29 +2,65 @@
 //  YourlistViewController.swift
 //  filmnia
 //
-//  Created by UserTQI on 21/05/20.
+//  Created by Lucas Rodrigues Dias on 21/05/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
 import UIKit
 
 class YourlistViewController: UIViewController {
-
+    
+    @IBOutlet weak var namelist: UILabel!
+    @IBOutlet weak var descriptionlist: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var viewModel: YourlistViewModel?
+    var resultRequest: DetailsList?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        viewModel?.getDetailsList()
+        viewModel?.delegate = self
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    init(viewModel: YourlistViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
     }
-    */
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func listName() {
+        namelist.text = viewModel?.detailslist?.name
+    }
+    
+    func descriptionList() {
+        descriptionlist.text = viewModel?.detailslist?.description
+    }
+    
+    func closeDetails() {
+        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func closeButtonAction(_ sender: UIButton) {
+        closeDetails()
+    }
+    
+}
 
+extension YourlistViewController: DetailsListDelegate {
+    
+    func detailsList() {
+        listName()
+        descriptionList()
+    }
+    
+    func showImagePosters(resultPoster: DetailsList) {
+        resultRequest = resultPoster
+        collectionView.reloadData()
+    }
+    
 }

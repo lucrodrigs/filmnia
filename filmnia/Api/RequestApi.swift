@@ -1,6 +1,6 @@
 //
 //  RequestApi.swift
-//  donefilmlist
+//  filmnia
 //
 //  Created by Lucas Rodrigues Dias on 13/02/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
@@ -400,7 +400,7 @@ class HTTPRequest {
         }
     }
     
-    func getDetailsUYourlists<T: Decodable>(endPoint: EndPoints, idList: Int, type: T.Type, completion: @escaping (_ result: T?,_ error: Error?) -> Void) {
+    func getDetailsYourlists<T: Decodable>(endPoint: EndPoints, idList: Int, type: T.Type, completion: @escaping (_ result: T?,_ error: Error?) -> Void) {
         
         guard let urlRequest = URL(string: Constants.urlBase + endPoint.rawValue + "/" + idList.description + Constants.apiKey) else {
             print("fatalERROR")
@@ -420,7 +420,6 @@ class HTTPRequest {
             }
             if let data = data {
                 do {
-                    
                     let response = try JSONDecoder().decode(T.self, from: data)
                     DispatchQueue.main.async {
                         completion(response, nil)

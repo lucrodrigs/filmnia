@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  donefilmlist
+//  filmnia
 //
 //  Created by Lucas Rodrigues Dias on 03/02/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
@@ -42,7 +42,7 @@ struct Television: Codable {
     let id: Int
     let name: String
     let firstAirDate: String
-    let voteAverage: Double
+    let voteAverage: Float
     let overview: String
     let posterPath: String?
     
@@ -194,7 +194,7 @@ struct Gravatar: Codable {
     let hash: String?
 }
 
-//MARK: - DetailsListAccount
+//MARK: - ListAccount
 struct ResultList: Codable {
     let results: [List]
 }
@@ -210,5 +210,44 @@ struct List: Codable {
         case resultDescription = "description"
         case id
         case itensCount = "item_count"
+    }
+}
+
+//MARK: - DetailsListAccount
+struct DetailsList: Codable {
+    let name: String
+    let description: String
+    let id: String
+    let items: [Item]
+
+    enum CodingKeys: String, CodingKey {
+        case name = "created_by"
+        case description = "description"
+        case id
+        case items
+    }
+}
+
+struct Item: Codable {
+    let id: Int?
+    let mediaType: String?
+    let name: String?
+    let voteAverage: Float?
+    let firstAirDate: String?
+    let posterPath: String?
+    let overview: String?
+    let title: String?
+    let releaseDate: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case mediaType = "media_type"
+        case name
+        case voteAverage = "vote_average"
+        case firstAirDate = "first_air_date"
+        case posterPath = "poster_path"
+        case overview
+        case title
+        case releaseDate = "release_date"
     }
 }

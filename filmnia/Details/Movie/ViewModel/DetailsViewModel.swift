@@ -2,7 +2,7 @@
 //  DetailsViewModel.swift
 //  filmnia
 //
-//  Created by UserTQI on 09/03/20.
+//  Created by Lucas Rodrigues Dias on 09/03/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 

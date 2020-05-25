@@ -28,8 +28,11 @@
 		BD5E9DD523FD7E350013C4C0 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5E9DD423FD7E350013C4C0 /* UIImage.swift */; };
 		BDADB3922406DF7D001A94A7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDADB3902406DF7D001A94A7 /* TableViewCell.swift */; };
 		BDADB3932406DF7D001A94A7 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDADB3912406DF7D001A94A7 /* TableViewCell.xib */; };
-		DD974576246B097400BF5453 /* YourlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD974574246B097400BF5453 /* YourlistViewController.swift */; };
-		DD974577246B097400BF5453 /* YourlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD974575246B097400BF5453 /* YourlistViewController.xib */; };
+		DD6DB7DB24770F76006907B4 /* CreateNewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB7D924770F76006907B4 /* CreateNewListViewController.swift */; };
+		DD6DB7DC24770F76006907B4 /* CreateNewListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6DB7DA24770F76006907B4 /* CreateNewListViewController.xib */; };
+		DD6DB7DF24770F99006907B4 /* CreateNewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB7DE24770F99006907B4 /* CreateNewListViewModel.swift */; };
+		DD6DB7E324771933006907B4 /* YourlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB7E124771933006907B4 /* YourlistViewController.swift */; };
+		DD6DB7E424771933006907B4 /* YourlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6DB7E224771933006907B4 /* YourlistViewController.xib */; };
 		DD97457B246B09A200BF5453 /* YourlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97457A246B09A200BF5453 /* YourlistViewModel.swift */; };
 		DD97457E246B1BD800BF5453 /* YourlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97457C246B1BD800BF5453 /* YourlistTableViewCell.swift */; };
 		DD97457F246B1BD800BF5453 /* YourlistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD97457D246B1BD800BF5453 /* YourlistTableViewCell.xib */; };
@@ -85,8 +88,11 @@
 		BD5E9DD423FD7E350013C4C0 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BDADB3902406DF7D001A94A7 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BDADB3912406DF7D001A94A7 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		DD974574246B097400BF5453 /* YourlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistViewController.swift; sourceTree = "<group>"; };
-		DD974575246B097400BF5453 /* YourlistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourlistViewController.xib; sourceTree = "<group>"; };
+		DD6DB7D924770F76006907B4 /* CreateNewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewListViewController.swift; sourceTree = "<group>"; };
+		DD6DB7DA24770F76006907B4 /* CreateNewListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewListViewController.xib; sourceTree = "<group>"; };
+		DD6DB7DE24770F99006907B4 /* CreateNewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewListViewModel.swift; sourceTree = "<group>"; };
+		DD6DB7E124771933006907B4 /* YourlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistViewController.swift; sourceTree = "<group>"; };
+		DD6DB7E224771933006907B4 /* YourlistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourlistViewController.xib; sourceTree = "<group>"; };
 		DD97457A246B09A200BF5453 /* YourlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistViewModel.swift; sourceTree = "<group>"; };
 		DD97457C246B1BD800BF5453 /* YourlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourlistTableViewCell.swift; sourceTree = "<group>"; };
 		DD97457D246B1BD800BF5453 /* YourlistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourlistTableViewCell.xib; sourceTree = "<group>"; };
@@ -255,11 +261,53 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		DD6DB7D724770F36006907B4 /* NewLists */ = {
+			isa = PBXGroup;
+			children = (
+				DD6DB7E024770FA0006907B4 /* ViewModel */,
+				DD6DB7DD24770F7F006907B4 /* View */,
+			);
+			path = NewLists;
+			sourceTree = "<group>";
+		};
+		DD6DB7D824770F44006907B4 /* Yourlist */ = {
+			isa = PBXGroup;
+			children = (
+				DD974578246B098100BF5453 /* ViewModel */,
+				DD974579246B098400BF5453 /* View */,
+			);
+			path = Yourlist;
+			sourceTree = "<group>";
+		};
+		DD6DB7DD24770F7F006907B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD6DB7D924770F76006907B4 /* CreateNewListViewController.swift */,
+				DD6DB7DA24770F76006907B4 /* CreateNewListViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD6DB7E024770FA0006907B4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD6DB7DE24770F99006907B4 /* CreateNewListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DD6DB7E5247721D0006907B4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		DD974573246B092B00BF5453 /* Lists */ = {
 			isa = PBXGroup;
 			children = (
-				DD974579246B098400BF5453 /* View */,
-				DD974578246B098100BF5453 /* ViewModel */,
+				DD6DB7D824770F44006907B4 /* Yourlist */,
+				DD6DB7D724770F36006907B4 /* NewLists */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -267,8 +315,7 @@
 		DD974578246B098100BF5453 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				DD974574246B097400BF5453 /* YourlistViewController.swift */,
-				DD974575246B097400BF5453 /* YourlistViewController.xib */,
+				DD97457A246B09A200BF5453 /* YourlistViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -276,7 +323,9 @@
 		DD974579246B098400BF5453 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DD97457A246B09A200BF5453 /* YourlistViewModel.swift */,
+				DD6DB7E124771933006907B4 /* YourlistViewController.swift */,
+				DD6DB7E224771933006907B4 /* YourlistViewController.xib */,
+				DD6DB7E5247721D0006907B4 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -538,13 +587,14 @@
 				BD5E9D4623FB0F5B0013C4C0 /* Assets.xcassets in Resources */,
 				BD5E9DB723FC7D000013C4C0 /* SearchViewController.xib in Resources */,
 				BD5E9DA223FC4C870013C4C0 /* FNavigationViewController.xib in Resources */,
-				DD974577246B097400BF5453 /* YourlistViewController.xib in Resources */,
 				DD97457F246B1BD800BF5453 /* YourlistTableViewCell.xib in Resources */,
 				BD5E9D4423FB0F550013C4C0 /* Main.storyboard in Resources */,
 				DDF2653324685EF300779D6B /* ProfileCollectionViewCell.xib in Resources */,
 				DDA564D0244DF2630064C7A6 /* Gilroy-Light.otf in Resources */,
+				DD6DB7DC24770F76006907B4 /* CreateNewListViewController.xib in Resources */,
 				DDC4517B241FC8DF001EA41A /* RecomendationCollectionViewCell.xib in Resources */,
 				BD5E9DCC23FD6AFE0013C4C0 /* HomeViewController.xib in Resources */,
+				DD6DB7E424771933006907B4 /* YourlistViewController.xib in Resources */,
 				DDC45173241FC522001EA41A /* ProfileViewController.xib in Resources */,
 				DDC451642412EE22001EA41A /* DetailsViewController.xib in Resources */,
 			);
@@ -560,6 +610,7 @@
 				BD5E9D9B23FC4A1E0013C4C0 /* AppCoordinator.swift in Sources */,
 				BDADB3922406DF7D001A94A7 /* TableViewCell.swift in Sources */,
 				DDA564982434FA8B0064C7A6 /* SearchCollectionViewCell.swift in Sources */,
+				DD6DB7DB24770F76006907B4 /* CreateNewListViewController.swift in Sources */,
 				DDA564C4244A2A5E0064C7A6 /* ProfileViewModel.swift in Sources */,
 				DD97457E246B1BD800BF5453 /* YourlistTableViewCell.swift in Sources */,
 				DDA564E22454C8FE0064C7A6 /* EnumeratesSection.swift in Sources */,
@@ -569,15 +620,16 @@
 				DDA5648F243278F30064C7A6 /* SearchViewModel.swift in Sources */,
 				DDC45172241FC522001EA41A /* ProfileViewController.swift in Sources */,
 				BD5E9DCF23FD6BA00013C4C0 /* PosterCollectionViewCell.swift in Sources */,
+				DD6DB7E324771933006907B4 /* YourlistViewController.swift in Sources */,
 				DDC4517A241FC8DF001EA41A /* RecomendationCollectionViewCell.swift in Sources */,
 				DDA564B724468BE30064C7A6 /* DetailsTelevisionViewModel.swift in Sources */,
 				BD5E9DC423FC851F0013C4C0 /* HomeViewModel.swift in Sources */,
 				BD5E9DCB23FD6AFE0013C4C0 /* HomeViewController.swift in Sources */,
+				DD6DB7DF24770F99006907B4 /* CreateNewListViewModel.swift in Sources */,
 				DDA564DF244F6FCD0064C7A6 /* LoginViewModel.swift in Sources */,
 				DDA564C6244A51780064C7A6 /* SceneDelegate.swift in Sources */,
 				DDA564DC244F6FBA0064C7A6 /* LoginViewController.swift in Sources */,
 				BD5E9D7423FB1CE60013C4C0 /* ResultsRequest.swift in Sources */,
-				DD974576246B097400BF5453 /* YourlistViewController.swift in Sources */,
 				DDC4516E2416DCBD001EA41A /* DetailsViewModel.swift in Sources */,
 				DDA564BA2447308C0064C7A6 /* DetailsTelevisionViewController.swift in Sources */,
 				DDF2653224685EF300779D6B /* ProfileCollectionViewCell.swift in Sources */,

@@ -2,7 +2,7 @@
 //  ProfileViewController.swift
 //  filmnia
 //
-//  Created by UserTQI on 16/03/20.
+//  Created by Lucas Rodrigues Dias on 16/03/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
@@ -20,9 +20,11 @@ class ProfileViewController: UIViewController {
     var createdlistButton: UIButton!
     var delegate: ProfileViewDelegate?
     var didSelectDelegate: DetailsSelectDelegate?
+    var didSelectListDelegate: DetailsListSelectDelegate?
     var viewModel: ProfileViewModel?
-    var resultsRequest: DetailsProfile?
+    var resultsProfile: DetailsProfile?
     var resultsGeneral: ResultsGeneral?
+    var resultsLists: ResultList?
     var resultsList = ResultList(results: [])
 
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
@@ -145,7 +147,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        
+        let lists = resultsList.results[indexPath.row]
+        didSelectListDelegate?.listSelected(list: lists)
+        
+    }
+    
+}
+
+extension ProfileViewController: DetailsListSelectDelegate {
+    
+    func listSelected(list: List) {
+        didSelectListDelegate?.listSelected(list: list)
     }
     
 }
@@ -215,7 +228,7 @@ extension ProfileViewController: ProfileViewDelegate, DetailsSelectDelegate {
     
     func toTelevision(_ model: ResultsAllType) -> Television {
         return Television(id: model.id ?? 0, name: model.name ?? "", firstAirDate: model.firstAirDate ?? "",
-                          voteAverage: Double(model.voteAverage ?? 0), overview: model.overview ?? "",
+                          voteAverage: model.voteAverage ?? 0, overview: model.overview ?? "",
                           posterPath: model.posterPath)
     }
     

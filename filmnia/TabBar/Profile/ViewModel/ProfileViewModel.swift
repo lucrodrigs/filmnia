@@ -2,7 +2,7 @@
 //  ProfileViewModel.swift
 //  filmnia
 //
-//  Created by UserTQI on 17/04/20.
+//  Created by Lucas Rodrigues Dias on 17/04/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
@@ -67,7 +67,14 @@ class ProfileViewModel {
                 print("error")
             } else {
                 if let result = result {
-                    self.returnedRequestFavorites(results: result, type: .television)
+                    var itens: [ResultsAllType] = []
+                    for item in result.results {
+                        var newItem = item
+                        newItem.type = .television
+                        itens.append(newItem)
+                    }
+                    let newResult = ResultsGeneral(results: itens)
+                    self.returnedRequestFavorites(results: newResult, type: .television)
                 }
             }
         }
@@ -79,7 +86,14 @@ class ProfileViewModel {
                 print("error")
             } else {
                 if let result = result {
-                    self.returnedRequestFavorites(results: result, type: .movie)
+                    var itens: [ResultsAllType] = []
+                    for item in result.results {
+                        var newItem = item
+                        newItem.type = .movie
+                        itens.append(newItem)
+                    }
+                    let newResult = ResultsGeneral(results: itens)
+                    self.returnedRequestFavorites(results: newResult, type: .movie)
                 }
             }
         }
@@ -91,7 +105,14 @@ class ProfileViewModel {
                 print("error")
             } else {
                 if let result = result {
-                    self.returnedRequestFavorites(results: result, type: .television)
+                    var itens: [ResultsAllType] = []
+                    for item in result.results {
+                        var newItem = item
+                        newItem.type = .television
+                        itens.append(newItem)
+                    }
+                    let newResult = ResultsGeneral(results: itens)
+                    self.returnedRequestFavorites(results: newResult, type: .television)
                 }
             }
         }

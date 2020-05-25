@@ -2,7 +2,7 @@
 //  File.swift
 //  filmnia
 //
-//  Created by UserTQI on 25/04/20.
+//  Created by Lucas Rodrigues Dias on 25/04/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 

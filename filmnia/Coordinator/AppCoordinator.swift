@@ -103,9 +103,19 @@ class AppCoordinator {
         }
     }
     
+    func detailsListViewController(model: List) {
+        let viewModel = YourlistViewModel(list: model)
+        let detailsList = YourlistViewController(viewModel: viewModel)
+        profileNavigation?.pushViewController(detailsList, animated: true)
+    }
+    
 }
 
-extension AppCoordinator: DetailsSelectDelegate {
+extension AppCoordinator: DetailsSelectDelegate, DetailsListSelectDelegate {
+    
+    func listSelected(list: List) {
+        detailsListViewController(model: list)
+    }
     
     func televisonSelected(televison: Television, flux: Flux) {
         detailsTelevisionViewController(model: televison, flux: flux)

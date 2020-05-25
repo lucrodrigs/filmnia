@@ -40,7 +40,16 @@ protocol DetailsMovieDelegate {
     func detailsMovie()
 }
 
+protocol DetailsListDelegate {
+    func detailsList()
+    func showImagePosters(resultPoster: DetailsList)
+}
+
 protocol DetailsSelectDelegate {
     func movieSelected(movie: Movies, flux: Flux)
     func televisonSelected(televison: Television, flux: Flux)
+}
+
+protocol DetailsListSelectDelegate {
+    func listSelected(list: List)
 }

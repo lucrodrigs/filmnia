@@ -2,7 +2,7 @@
 //  DetailsViewController.swift
 //  filmnia
 //
-//  Created by UserTQI on 06/03/20.
+//  Created by Lucas Rodrigues Dias on 06/03/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
@@ -169,7 +169,6 @@ class DetailsViewController: UIViewController {
     @IBAction func closeButtonAction(_ sender: Any) {
         closeDetails()
     }
-    
     
 }
 

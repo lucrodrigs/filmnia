@@ -2,7 +2,7 @@
 //  RecomendationCollectionViewCell.swift
 //  filmnia
 //
-//  Created by UserTQI on 16/03/20.
+//  Created by Lucas Rodrigues Dias on 16/03/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
