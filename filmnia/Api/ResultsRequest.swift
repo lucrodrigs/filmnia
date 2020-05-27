@@ -249,3 +249,25 @@ struct Item: Codable {
         case releaseDate = "release_date"
     }
 }
+
+//MARK: - ResponseCreateNewList
+struct ResponseNewList: Codable {
+    let statusMessage: String
+    let success: Bool
+    let listID: Int
+
+    enum CodingKeys: String, CodingKey {
+        case statusMessage = "status_message"
+        case success
+        case listID = "list_id"
+    }
+}
+
+//MARK: - ResponseMarks
+struct ResponseMarks: Codable {
+    let statusMessage: String
+    
+    enum CodingKeys: String, CodingKey {
+        case statusMessage = "status_message"
+    }
+}

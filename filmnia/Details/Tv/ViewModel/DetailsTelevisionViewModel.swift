@@ -14,6 +14,7 @@ class DetailsTelevisionViewModel {
     var details: DetailsTelevison?
     var delegate: DetailsTelevisionDelegate?
     var resultSection: [ResultsTelevision] = []
+    var resultMark: ResponseMarks?
     var service: HTTPRequest
     
     init(service: HTTPRequest = HTTPRequest(), television: Television) {
@@ -47,6 +48,39 @@ class DetailsTelevisionViewModel {
                 if let result = result {
                     self.resultSection.append(result)
                     self.delegate?.showImagePosters(resultMovies: result)
+                }
+            }
+        }
+    }
+    
+    func markFavoriteAction() {
+        let params: [String: String] = ["media_type":"tv",
+                                        "media_id":String(television.id),
+                                        "favorite":String(true)]
+        
+        service.postFavorite(endPoint: .urlGetDetailProfile, params: params, idSession: Session.shared.sessionId, idAccount: Account.shared.accountId, type: ResponseMarks.self) { (result, error) in
+            if error != nil {
+                print("error")
+            } else {
+                if let result = result {
+                    self.resultMark = result
+                }
+            }
+        }
+    }
+    
+    func markWatchedAction() {
+        let params: [String: String] = ["media_type":"tv",
+                                        "media_id":String(television.id),
+                                        "watchlist":String(true)]
+        
+        service.postWatched(endPoint: .urlGetDetailProfile, params: params, idSession: Session.shared.sessionId, idAccount: Account.shared.accountId, type: ResponseMarks.self) { (result, error) in
+            if error != nil {
+                print("error")
+            } else {
+                if let result = result {
+                    self.resultMark = result
+                    print(result)
                 }
             }
         }

@@ -54,3 +54,7 @@ protocol DetailsSelectDelegate {
 extension DetailsSelectDelegate {
     func listSelected(list: List) {}
 }
+
+protocol CreateListDelegate {
+    func didCreateList()
+}

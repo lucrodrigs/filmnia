@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     var createdlistButton: UIButton!
     var delegate: ProfileViewDelegate?
     var didSelectDelegate: DetailsSelectDelegate?
-    
+    var didCreateDelegate: CreateListDelegate?
     var viewModel: ProfileViewModel?
     var resultsProfile: DetailsProfile?
     var resultsGeneral: ResultsGeneral?
@@ -108,7 +108,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func createdlistAction(_ sender: UIButton) {
-      print("CALL")
+        didCreateDelegate?.didCreateList()
     }
     
     func footer() -> UIView? {
@@ -122,7 +122,6 @@ class ProfileViewController: UIViewController {
         createdlistButton.titleLabel?.font = UIFont(name: "Gilroy-SemiBold", size: 16)
         createdlistButton.layer.cornerRadius = createdlistButton.frame.size.width/15
         createdlistButton.addTarget(self, action: #selector(createdlistAction), for: .touchUpInside)
-        
         footer.addSubview(createdlistButton)
         return footer
     }
@@ -182,7 +181,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 }
 
 extension ProfileViewController: ProfileViewDelegate {
-
+    
     func showLists(list: ResultList) {
         self.resultsList = list
         tableViewYourlist.reloadData()

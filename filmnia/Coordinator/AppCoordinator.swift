@@ -69,6 +69,7 @@ class AppCoordinator {
         let viewModel = ProfileViewModel(profile: model)
         let tabView = ProfileViewController(viewModel: viewModel)
         tabView.didSelectDelegate = self
+        tabView.didCreateDelegate = self
         let navigation = FNavigationViewController(rootViewController: tabView)
         navigation.tabBarItem.image = UIImage(systemName: "person.fill")
         navigation.tabBarItem.title = "Profile"
@@ -115,6 +116,13 @@ class AppCoordinator {
         profileNavigation?.pushViewController(detailsList, animated: true)
     }
     
+    func createListViewController() {
+        let viewModel = CreateNewListViewModel()
+        let createListView = CreateNewListViewController(viewModel: viewModel)
+        createListView.didCreateDelegate = self
+        profileNavigation?.present(createListView, animated: true)
+    }
+    
 }
 
 extension AppCoordinator: DetailsSelectDelegate {
@@ -137,6 +145,14 @@ extension AppCoordinator: LoginCoordinatorDelegate {
     
     func didLogin() {
         start()
+    }
+    
+}
+
+extension AppCoordinator: CreateListDelegate {
+    
+    func didCreateList() {
+        createListViewController()
     }
     
 }

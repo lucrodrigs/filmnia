@@ -112,6 +112,9 @@
                                 <constraint firstAttribute="width" constant="30" id="lIi-x2-vbc"/>
                             </constraints>
                             <state key="normal" image="AddList"/>
+                            <connections>
+                                <action selector="AddlistAction:" destination="-1" eventType="touchUpInside" id="utk-I1-gV4"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45Z-CE-7xi">
                             <rect key="frame" x="282.5" y="1" width="30" height="30"/>
@@ -120,6 +123,9 @@
                                 <constraint firstAttribute="width" constant="30" id="fNP-pZ-aJI"/>
                             </constraints>
                             <state key="normal" image="checkList"/>
+                            <connections>
+                                <action selector="WatchedAction:" destination="-1" eventType="touchUpInside" id="VvE-gC-jVN"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K44-jj-iBS">
                             <rect key="frame" x="12" y="1" width="30" height="30"/>
@@ -128,6 +134,9 @@
                                 <constraint firstAttribute="height" constant="30" id="b34-D1-0rP"/>
                             </constraints>
                             <state key="normal" image="favoriteList"/>
+                            <connections>
+                                <action selector="favoriteAction:" destination="-1" eventType="touchUpInside" id="LkL-bH-i6s"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add to list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="377-28-EqX">
                             <rect key="frame" x="192.5" y="5.5" width="80" height="21"/>

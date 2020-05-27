@@ -159,6 +159,18 @@ class DetailsTelevisionViewController: UIViewController {
         recommendationTitle?.text = "Recommendations for " + viewModel.television.name
     }
     
+    @IBAction func favoriteAction(_ sender: UIButton) {
+        viewModel.markFavoriteAction()
+    }
+    
+    @IBAction func AddlistAction(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func WatchedAction(_ sender: UIButton) {
+        viewModel.markWatchedAction()
+    }
+    
     func closeDetails() {
         self.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
