@@ -80,7 +80,6 @@ class DetailsTelevisionViewModel {
             } else {
                 if let result = result {
                     self.resultMark = result
-                    print(result)
                 }
             }
         }

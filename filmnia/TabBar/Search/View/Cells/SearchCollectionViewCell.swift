@@ -18,6 +18,10 @@ class SearchCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = .clear
     }
     
+    override func prepareForReuse() {
+        posterImage.image = nil
+    }
+    
     func urlShowImage(path: String) {
             if let url = URL(string: path) {
                 posterImage.downloadImage(from: url)

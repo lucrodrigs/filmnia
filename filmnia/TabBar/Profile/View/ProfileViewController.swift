@@ -182,6 +182,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 extension ProfileViewController: ProfileViewDelegate {
     
+    func reloadLists() {
+        tableViewYourlist.reloadData()
+    }
+    
     func showLists(list: ResultList) {
         self.resultsList = list
         tableViewYourlist.reloadData()

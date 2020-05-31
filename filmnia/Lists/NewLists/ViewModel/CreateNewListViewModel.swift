@@ -32,6 +32,7 @@ class CreateNewListViewModel {
             } else {
                 if let result = result {
                     self.resultNewList = result
+                    self.profileDelegate?.reloadLists()
                 }
             }
         }
@@ -44,7 +45,6 @@ class CreateNewListViewModel {
             } else {
                 if let result = result {
                     self.yourlist = result
-                    self.resultsLists.append(result)
                     self.profileDelegate?.showLists(list: result)
                 }
             }

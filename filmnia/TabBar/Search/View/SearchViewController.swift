@@ -54,6 +54,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.searchTextField.textColor = .white
         if searchText.isEmpty {
             viewModel.searchQuery = searchText
             resultsRequest?.results.removeAll()

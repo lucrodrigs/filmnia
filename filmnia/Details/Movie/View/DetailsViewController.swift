@@ -21,8 +21,13 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var rateLabel: UILabel?
     
     var delegate: DetailsMovieDelegate?
+    var delegateAlert: AlertDelegate?
+    var addToListDelegate: AddItemToListDelegate?
     var resultsRequest: ResultsMovies?
     var viewModel: DetailsViewModel!
+    var shapeLayer: CAShapeLayer?
+    var transparentLayer: CAShapeLayer?
+    var trackLayer: CAShapeLayer?
     
     init(viewModel: DetailsViewModel) {
         super.init(nibName: nil, bundle: nil)
@@ -44,6 +49,7 @@ class DetailsViewController: UIViewController {
         viewModel.recomendationMovies()
         viewModel.getDetailsMovie()
         viewModel.delegate = self
+        viewModel.delegateAlert = self
         collectionView.dataSource = self
         collectionView.delegate = self
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
@@ -58,7 +64,7 @@ class DetailsViewController: UIViewController {
         let urlString = Constants.urlBaseImage + "original" + (viewModel.movies.posterPath ?? "")
         if let url = URL(string: urlString) {
             posterMovie?.downloadImage(from: url)
-            posterMovie?.layer.cornerRadius = ((posterMovie?.frame.size.width)!/12)
+            posterMovie?.layer.cornerRadius = ((posterMovie?.frame.size.width)!/5.6)
         }
     }
     
@@ -87,6 +93,13 @@ class DetailsViewController: UIViewController {
     }
     
     func createRateAverage(rate: CGFloat, transparentColor: CGColor, shapeColor: CGColor){
+        self.shapeLayer?.removeFromSuperlayer()
+        self.shapeLayer = nil
+        self.trackLayer?.removeFromSuperlayer()
+        self.trackLayer = nil
+        self.transparentLayer?.removeFromSuperlayer()
+        self.transparentLayer = nil
+        
         let shapeLayer = CAShapeLayer()
         let trackLayer = CAShapeLayer()
         let transparentLayer = CAShapeLayer()
@@ -97,6 +110,7 @@ class DetailsViewController: UIViewController {
         trackLayer.lineWidth = 15
         trackLayer.fillColor = UIColor.ColorDarkDefault.cgColor
         trackLayer.strokeEnd = 0.8
+        self.trackLayer = trackLayer
         rateAverage.layer.addSublayer(trackLayer)
         
         transparentLayer.path = circularPath.cgPath
@@ -104,6 +118,7 @@ class DetailsViewController: UIViewController {
         transparentLayer.lineWidth = 5
         transparentLayer.fillColor = UIColor.clear.cgColor
         transparentLayer.strokeEnd = 0.8
+        self.transparentLayer = transparentLayer
         rateAverage.layer.addSublayer(transparentLayer)
         
         shapeLayer.path = circularPath.cgPath
@@ -111,6 +126,7 @@ class DetailsViewController: UIViewController {
         shapeLayer.lineWidth = 5
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineCap = .round
+        self.shapeLayer = shapeLayer
         rateAverage.layer.addSublayer(shapeLayer)
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -161,6 +177,18 @@ class DetailsViewController: UIViewController {
         recommendationMovie?.text = String("Recommendation for " + (titleRecommendation ?? "untitle"))
     }
     
+    @IBAction func favoriteAction(_ sender: UIButton) {
+        viewModel.markFavoriteAction()
+    }
+    
+    @IBAction func AddlistAction(_ sender: UIButton) {
+        addToListDelegate?.addItemToSelectedList(movie: viewModel.movies)
+    }
+    
+    @IBAction func WatchedAction(_ sender: UIButton) {
+        viewModel.markWatchedAction()
+    }
+    
     func closeDetails() {
         self.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
@@ -172,7 +200,13 @@ class DetailsViewController: UIViewController {
     
 }
 
-extension DetailsViewController: DetailsMovieDelegate {
+extension DetailsViewController: DetailsMovieDelegate, AlertDelegate {
+    
+    func alertMarks(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func showImagePosters(resultMovies: ResultsMovies) {
         resultsRequest = resultMovies

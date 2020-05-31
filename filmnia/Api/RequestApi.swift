@@ -547,4 +547,41 @@ class HTTPRequest {
         }
     }
     
+    func postAddItemToList<T: Decodable>(endPoint: EndPoints, params: [String: Int], idSession: String, idList: Int, type: T.Type, completion: @escaping (_ result: T?, _ error: Error?) -> Void) {
+        
+        guard let urlRequest = URL(string: Constants.urlBase + endPoint.rawValue + idList.description + "/add_item" + Constants.apiKey + "session_id=" + idSession.description) else {
+            print("error")
+            return
+        }
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+
+        var request = URLRequest(url: urlRequest)
+        request.httpMethod = Constants.httpMethodPost
+        request.addValue("application/json", forHTTPHeaderField:"Content-Type")
+        request.httpBody = jsonData
+
+        task.execute(url: request) { data, response, error in
+            if error != nil {
+                print("fatalERROR in request")
+                DispatchQueue.main.sync {
+                    completion(nil, error)
+                }
+                return
+            }
+            if let data = data {
+                do {
+                    let response = try JSONDecoder().decode(T.self, from: data)
+                    DispatchQueue.main.sync {
+                        completion(response, nil)
+                    }
+                } catch {
+                    print("ERROR in JSON: JSONSerialization")
+                    print(error)
+                    print(String.init(data: data, encoding: .utf8) ?? "")
+                }
+            }
+        }
+    }
+    
 }

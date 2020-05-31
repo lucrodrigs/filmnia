@@ -80,7 +80,7 @@ class AppCoordinator {
     func detailsMovieViewController(model: Movies, flux: Flux) {
         let viewModel = DetailsViewModel(movies: model)
         let detailsView = DetailsViewController(viewModel: viewModel)
-        
+        detailsView.addToListDelegate = self
         switch flux {
         case .home:
             homeNavigation?.pushViewController(detailsView, animated: true)
@@ -123,6 +123,13 @@ class AppCoordinator {
         profileNavigation?.present(createListView, animated: true)
     }
     
+    func addItemToListViewController(model: Movies) {
+        let viewModel = AddItemListViewModel(movies: model)
+        let addItemToList = AddItemListViewController(viewModel: viewModel)
+        addItemToList.didAddToListDelegate = self
+        homeNavigation?.present(addItemToList, animated: true)
+    }
+    
 }
 
 extension AppCoordinator: DetailsSelectDelegate {
@@ -153,6 +160,14 @@ extension AppCoordinator: CreateListDelegate {
     
     func didCreateList() {
         createListViewController()
+    }
+    
+}
+
+extension AppCoordinator: AddItemToListDelegate {
+    
+    func addItemToSelectedList(movie: Movies) {
+        addItemToListViewController(model: movie)
     }
     
 }

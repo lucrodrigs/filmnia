@@ -13,7 +13,9 @@ class DetailsViewModel {
     var movies: Movies
     var details: DetailsMovie?
     var delegate: DetailsMovieDelegate?
+    var delegateAlert: AlertDelegate?
     var resultSection: [ResultsMovies] = []
+    var resultMark: ResponseMarks?
     var service: HTTPRequest
     
     init(service: HTTPRequest = HTTPRequest(), movies: Movies) {
@@ -47,6 +49,40 @@ class DetailsViewModel {
                 if let result = result {
                     self.resultSection.append(result)
                     self.delegate?.showImagePosters(resultMovies: result)
+                }
+            }
+        }
+    }
+    
+    func markFavoriteAction() {
+        let params: [String: String] = ["media_type":"movie",
+                                        "media_id":String(movies.id),
+                                        "favorite":String(true)]
+        
+        service.postFavorite(endPoint: .urlGetDetailProfile, params: params, idSession: Session.shared.sessionId, idAccount: Account.shared.accountId, type: ResponseMarks.self) { (result, error) in
+            if error != nil {
+                print("error")
+            } else {
+                if let result = result {
+                    self.resultMark = result
+                    self.delegateAlert?.alertMarks(title: "Mark to Favorite", message: "Mark " + (self.details?.originalTitle ?? "movie") + " to Favorite")
+                }
+            }
+        }
+    }
+    
+    func markWatchedAction() {
+        let params: [String: String] = ["media_type":"movie",
+                                        "media_id":String(movies.id),
+                                        "watchlist":String(true)]
+        
+        service.postWatched(endPoint: .urlGetDetailProfile, params: params, idSession: Session.shared.sessionId, idAccount: Account.shared.accountId, type: ResponseMarks.self) { (result, error) in
+            if error != nil {
+                print("error")
+            } else {
+                if let result = result {
+                    self.resultMark = result
+                    self.delegateAlert?.alertMarks(title: "Mark to Watched", message: "Mark " + (self.details?.originalTitle ?? "movie") + " to Favorites")
                 }
             }
         }

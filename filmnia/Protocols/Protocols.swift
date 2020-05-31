@@ -28,6 +28,7 @@ protocol ProfileViewDelegate {
     func showImagePosters(resultPoster: ResultsGeneral)
     func detailsProfile()
     func showLists(list: ResultList)
+    func reloadLists()
 }
 
 protocol DetailsTelevisionDelegate {
@@ -57,4 +58,12 @@ extension DetailsSelectDelegate {
 
 protocol CreateListDelegate {
     func didCreateList()
+}
+
+protocol AddItemToListDelegate {
+    func addItemToSelectedList(movie: Movies)
+}
+
+protocol AlertDelegate {
+    func alertMarks(title: String, message: String)
 }

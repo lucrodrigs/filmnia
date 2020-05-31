@@ -1,42 +1,37 @@
 //
-//  CreateNewListViewController.swift
+//  AddItemListViewController.swift
 //  filmnia
 //
-//  Created by Lucas Rodrigues Dias on 21/05/20.
+//  Created by UserTQI on 27/05/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
 import UIKit
 
-class CreateNewListViewController: UIViewController {
+class AddItemListViewController: UIViewController {
     
-    @IBOutlet weak var namelist: UITextField!
-    @IBOutlet weak var descriptionlist: UITextField!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableViewList: UITableView!
-    @IBOutlet weak var buttonCreate: UIButton!
+    @IBOutlet weak var titleAddItem: UILabel!
     
-    var viewModel: CreateNewListViewModel?
-    var resultsList = ResultList(results: [])
-    var didSelectDelegate: DetailsSelectDelegate?
+    var viewModel: AddItemListViewModel?
     var profileDelegate: ProfileViewDelegate?
-    var didCreateDelegate: CreateListDelegate?
+    var didAddToListDelegate: AddItemToListDelegate?
+    var resultsList = ResultList(results: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
-        setupTitle()
         setupTableView()
-        buttonDesing()
+        titleView()
+        viewModel?.profileDelegate = self
+        viewModel?.delegateAlert = self
         tableViewList.dataSource = self
         tableViewList.delegate = self
-        viewModel?.profileDelegate = self
         viewModel?.showYourlists()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal")!)
         self.tableViewList.backgroundColor = .clear
     }
     
-    init(viewModel: CreateNewListViewModel) {
+    init(viewModel: AddItemListViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }
@@ -49,40 +44,23 @@ class CreateNewListViewController: UIViewController {
         tableViewList.register(UINib(nibName: "YourlistTableViewCell", bundle: nil), forCellReuseIdentifier: "YourlistTableViewCell")
     }
     
-    func buttonDesing() {
-        buttonCreate.layer.cornerRadius = buttonCreate.frame.size.width/9.5
-        buttonCreate.titleLabel?.font = UIFont(name: "Gilroy-SemiBold", size: 18)
-        buttonCreate.setTitleColor(.ColorGrayDefault, for: .normal)
+    func titleView() {
+        titleAddItem.font = UIFont(name: "Gilroy-SemiBold", size: titleAddItem.font.pointSize)
+        titleAddItem.textColor = .white
     }
     
-    @IBAction func createListAction(_ sender: UIButton) {
-        createNewListAction()
-        closeNewList()
-    }
-    
-    func setupTitle() {
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont(name: "Gilroy-SemiBold", size: titleLabel.font.pointSize)
-    }
-    
-    func createNewListAction(){
-        let listname: String? = namelist.text
-        let listdescription: String? = descriptionlist.text
-        viewModel?.createNewList(namelist: listname ?? "", descriptionlist: listdescription ?? "")
-    }
-    
-    @IBAction func closeCreateNewList(_ sender: UIButton) {
-        closeNewList()
-    }
-    
-    func closeNewList() {
+    func closeDetails() {
         self.dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
+    }
+
+    @IBAction func closeAction(_ sender: Any) {
+        closeDetails()
     }
     
 }
 
-extension CreateNewListViewController: UITableViewDelegate, UITableViewDataSource {
+extension AddItemListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultsList.results.count
@@ -99,9 +77,20 @@ extension CreateNewListViewController: UITableViewDelegate, UITableViewDataSourc
         return 100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let lists = resultsList.results[indexPath.row]
+        viewModel?.addItemToList(selectedList: lists.id ?? 0)
+    }
+    
 }
 
-extension CreateNewListViewController: ProfileViewDelegate {
+extension AddItemListViewController: ProfileViewDelegate, AlertDelegate {
+
+    func alertMarks(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: closeAction(_:)))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func reloadLists() {}
     
