@@ -20,7 +20,6 @@
                 <outlet property="collectionView" destination="1ZC-Ob-UrL" id="P8v-ko-qsJ"/>
                 <outlet property="overviewLabel" destination="YSp-Ii-b3l" id="rSu-J7-fH0"/>
                 <outlet property="posterMovie" destination="zD9-fZ-vEy" id="6M2-vP-jGn"/>
-                <outlet property="progressLoad" destination="wDO-bQ-shF" id="unc-Zq-wcZ"/>
                 <outlet property="rateAverage" destination="hF7-5B-Ute" id="7hX-c6-imL"/>
                 <outlet property="rateLabel" destination="4uC-1M-5qS" id="pvL-h5-QdS"/>
                 <outlet property="recommendationMovie" destination="fJd-rT-O1p" id="Gdc-Zo-jAe"/>
@@ -209,7 +208,8 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hF7-5B-Ute" secondAttribute="trailing" constant="59" id="2Tz-5j-CEG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YSp-Ii-b3l" secondAttribute="trailing" constant="10" id="5N5-f6-CA1"/>

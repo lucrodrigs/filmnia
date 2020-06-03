@@ -19,7 +19,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var rateAverage: UIView!
     @IBOutlet weak var rateLabel: UILabel?
-    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView?
     
     var delegate: DetailsMovieDelegate?
     var addToListDelegate: AddItemToListDelegate?
@@ -65,7 +65,7 @@ class DetailsViewController: UIViewController {
         if let url = URL(string: urlString) {
             posterMovie?.downloadImage(from: url, completion: {
                 [weak self] in
-                self?.progressLoad.stopAnimating()
+                self?.progressLoad?.stopAnimating()
             })
             posterMovie?.layer.cornerRadius = ((posterMovie?.frame.size.width)!/5.6)
         }
@@ -141,20 +141,18 @@ class DetailsViewController: UIViewController {
         shapeLayer.add(animation, forKey: "animateProgress")
     }
     
-//    func translateDetails() {
-//        let offset = posterMovie?.frame.origin ?? CGPoint.zero
-//        let x: CGFloat = 0, y: CGFloat = 0
-//        squareBlue.transform = CGAffineTransform(translationX: offset.x + x, y: offset.y + y)
-//        squareBlue.isHidden = false
-//        UIView.animate(
-//            withDuration: 1, delay: 1, usingSpringWithDamping: 0.47, initialSpringVelocity: 3,
-//            options: .curveEaseOut, animations: {
-//                squareBlue.transform = .identity
-//                squareBlue.alpha = 1
-//        })
-//    }
-    
-    
+    func animateView() {
+        self.view.alpha = 0
+        self.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        UIView.animate(
+            withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.view.transform = .identity
+                self.view.alpha = 1
+        }, completion: nil)
+    }
+
     
     func timeMovie() {
         if let releaseTime = viewModel.details?.runtime {
@@ -262,7 +260,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        animateView()
         guard let movies = resultsRequest?.results[indexPath.row] else { return }
         viewModel.movies = movies
         viewModel.getDetailsMovie()
