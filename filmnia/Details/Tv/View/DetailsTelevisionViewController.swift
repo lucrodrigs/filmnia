@@ -14,7 +14,7 @@ class DetailsTelevisionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var recommendationTitle: UILabel?
     @IBOutlet weak var overviewTelevision: UILabel?
-    @IBOutlet weak var releaseAge: UITextField?
+    @IBOutlet weak var releaseAge: UILabel?
     @IBOutlet weak var releaseSeasons: UILabel?
     @IBOutlet weak var titleTelevision: UILabel?
     @IBOutlet weak var rateLabel: UILabel?
@@ -123,6 +123,18 @@ class DetailsTelevisionViewController: UIViewController {
         shapeLayer.add(animation, forKey: "animateProgress")
     }
     
+    func animateView() {
+        self.view.alpha = 0
+        self.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        UIView.animate(
+            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.view.transform = .identity
+                self.view.alpha = 1
+        }, completion: nil)
+    }
+    
     func televisionTitle() {
         let title = viewModel.television.name
         titleTelevision?.font = UIFont(name: "Gilroy-ExtraBold", size: titleTelevision?.font.pointSize ?? 24)
@@ -226,6 +238,7 @@ extension DetailsTelevisionViewController: UICollectionViewDelegate, UICollectio
         viewModel?.getDetailsTelevision()
         viewModel.recomendationTelevision()
         collectionView.reloadData()
+        animateView()
     }
     
 }

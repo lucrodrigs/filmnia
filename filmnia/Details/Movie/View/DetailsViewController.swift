@@ -146,7 +146,7 @@ class DetailsViewController: UIViewController {
         self.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         
         UIView.animate(
-            withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.view.transform = .identity
                 self.view.alpha = 1
@@ -260,12 +260,12 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        animateView()
         guard let movies = resultsRequest?.results[indexPath.row] else { return }
         viewModel.movies = movies
         viewModel.getDetailsMovie()
         viewModel.recomendationMovies()
         collectionView.reloadData()
+        animateView()
     }
     
 }

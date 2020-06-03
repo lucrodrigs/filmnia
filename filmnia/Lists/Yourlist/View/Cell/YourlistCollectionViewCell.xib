@@ -16,14 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="127" height="187"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ES-Yc-Nq6">
-                        <rect key="frame" x="0.0" y="0.0" width="127" height="187"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="127" id="b7H-fY-MRp"/>
-                            <constraint firstAttribute="height" constant="187" id="wEy-2p-N1i"/>
-                        </constraints>
-                    </imageView>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YI9-pw-k49">
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YI9-pw-k49">
                         <rect key="frame" x="48.5" y="78.5" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Ueg-EY-IfN"/>
@@ -31,6 +24,13 @@
                         </constraints>
                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </activityIndicatorView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ES-Yc-Nq6">
+                        <rect key="frame" x="0.0" y="0.0" width="127" height="187"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="127" id="b7H-fY-MRp"/>
+                            <constraint firstAttribute="height" constant="187" id="wEy-2p-N1i"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -44,6 +44,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="posterImage" destination="4ES-Yc-Nq6" id="DFN-wW-cmH"/>
+                <outlet property="progressLoad" destination="4ES-Yc-Nq6" id="PD4-PC-LDh"/>
             </connections>
             <point key="canvasLocation" x="132" y="144"/>
         </collectionViewCell>
