@@ -11,6 +11,7 @@ import UIKit
 class RecomendationCollectionViewCell: UICollectionViewCell {
         
     @IBOutlet weak var posterImage: UIImageView!
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,7 +20,10 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
         
     func urlShowImage(path: String) {
         if let url = URL(string: path) {
-            posterImage.downloadImage(from: url)
+            posterImage.downloadImage(from: url, completion: {
+                [weak self] in
+                self?.progressLoad.stopAnimating()
+            })
         }
     }
     

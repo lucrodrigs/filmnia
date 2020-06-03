@@ -23,12 +23,22 @@
                             <constraint firstAttribute="height" constant="187" id="wEy-2p-N1i"/>
                         </constraints>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YI9-pw-k49">
+                        <rect key="frame" x="48.5" y="78.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Ueg-EY-IfN"/>
+                            <constraint firstAttribute="width" constant="30" id="Z8c-5k-40X"/>
+                        </constraints>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="YI9-pw-k49" firstAttribute="centerX" secondItem="4ES-Yc-Nq6" secondAttribute="centerX" id="0YB-S3-vhs"/>
                 <constraint firstAttribute="bottom" secondItem="4ES-Yc-Nq6" secondAttribute="bottom" id="E9F-WX-sia"/>
                 <constraint firstItem="4ES-Yc-Nq6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="G0O-cV-gJh"/>
                 <constraint firstItem="4ES-Yc-Nq6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ihn-m4-Lab"/>
+                <constraint firstItem="YI9-pw-k49" firstAttribute="centerY" secondItem="4ES-Yc-Nq6" secondAttribute="centerY" id="aIb-Bl-f7H"/>
                 <constraint firstAttribute="trailing" secondItem="4ES-Yc-Nq6" secondAttribute="trailing" id="x1b-wZ-8re"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

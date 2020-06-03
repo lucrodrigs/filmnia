@@ -11,6 +11,7 @@ import UIKit
 class ProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,9 +19,15 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = .clear
     }
     
+    override func prepareForReuse() {
+        posterImage.image = nil
+    }
+    
     func urlShowImage(path: String) {
         if let url = URL(string: path) {
-            posterImage.downloadImage(from: url)
+            posterImage.downloadImage(from: url, completion: { [weak self] in
+                self?.progressLoad.stopAnimating()
+            })
         }
     }
     

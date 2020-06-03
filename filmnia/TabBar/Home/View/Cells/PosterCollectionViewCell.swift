@@ -11,6 +11,7 @@ import UIKit
 class PosterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,10 +19,16 @@ class PosterCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = .clear
     }
     
-//aqui eu transformo a url de posterPath em imagem
+    override func prepareForReuse() {
+        posterImage.image = nil
+    }
+    
     func urlShowImage(path: String) {
         if let url = URL(string: path) {
-            posterImage.downloadImage(from: url)
+            posterImage.downloadImage(from: url, completion: {
+                [weak self] in
+                self?.progressLoad.stopAnimating()
+            })
         }
     }
     
@@ -29,7 +36,6 @@ class PosterCollectionViewCell: UICollectionViewCell {
         return Constants.urlBaseImage + "w200" + url
     }
     
-//aqui eu mostro a imagem na celula definida na SearchViewController
     func cellPosterMoviesPath(dataMovie: Movies) {
         let imageUrl = imageURl(from: dataMovie.posterPath ?? "")
         urlShowImage(path: imageUrl)

@@ -19,9 +19,9 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var rateAverage: UIView!
     @IBOutlet weak var rateLabel: UILabel?
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
     
     var delegate: DetailsMovieDelegate?
-    var delegateAlert: AlertDelegate?
     var addToListDelegate: AddItemToListDelegate?
     var resultsRequest: ResultsMovies?
     var viewModel: DetailsViewModel!
@@ -63,7 +63,10 @@ class DetailsViewController: UIViewController {
     func detailsImage() {
         let urlString = Constants.urlBaseImage + "original" + (viewModel.movies.posterPath ?? "")
         if let url = URL(string: urlString) {
-            posterMovie?.downloadImage(from: url)
+            posterMovie?.downloadImage(from: url, completion: {
+                [weak self] in
+                self?.progressLoad.stopAnimating()
+            })
             posterMovie?.layer.cornerRadius = ((posterMovie?.frame.size.width)!/5.6)
         }
     }
@@ -137,6 +140,21 @@ class DetailsViewController: UIViewController {
         shapeLayer.strokeEnd = rate
         shapeLayer.add(animation, forKey: "animateProgress")
     }
+    
+//    func translateDetails() {
+//        let offset = posterMovie?.frame.origin ?? CGPoint.zero
+//        let x: CGFloat = 0, y: CGFloat = 0
+//        squareBlue.transform = CGAffineTransform(translationX: offset.x + x, y: offset.y + y)
+//        squareBlue.isHidden = false
+//        UIView.animate(
+//            withDuration: 1, delay: 1, usingSpringWithDamping: 0.47, initialSpringVelocity: 3,
+//            options: .curveEaseOut, animations: {
+//                squareBlue.transform = .identity
+//                squareBlue.alpha = 1
+//        })
+//    }
+    
+    
     
     func timeMovie() {
         if let releaseTime = viewModel.details?.runtime {
@@ -244,6 +262,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         guard let movies = resultsRequest?.results[indexPath.row] else { return }
         viewModel.movies = movies
         viewModel.getDetailsMovie()

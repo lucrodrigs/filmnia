@@ -12,10 +12,6 @@ protocol LoginCoordinatorDelegate: AnyObject {
     func didLogin()
 }
 
-protocol LoginViewDelegate: AnyObject {
-    func erroLogin(error: Error)
-}
-
 protocol HomeViewDelegate {
     func showImagePosters(resultPoster: EnumerateSection.ContentSection)
 }

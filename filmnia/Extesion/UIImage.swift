@@ -9,17 +9,19 @@
 import UIKit
 
 extension UIImageView {
+    typealias funcaoRetorno = () -> Void
     
     func getData(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
-    func downloadImage(from url: URL) {
+    func downloadImage(from url: URL, completion: (() -> Void)? = nil) {
         getData(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
             let image = UIImage(data: data)
             DispatchQueue.main.async() {
                 self.image = image
+                completion?()
             }
         }
     }

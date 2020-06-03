@@ -17,10 +17,15 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
-        viewModel.delegate = self
+        viewModel.delegateAlert = self
         viewModel.requestTokenForLogin()
         hideKeyboardWhenTappedAround()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
     }
     
     func Login() {
@@ -35,10 +40,12 @@ class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController: LoginViewDelegate {
+extension LoginViewController: AlertDelegate {
     
-    func erroLogin(error: Error) {
-        print("ERROR NO LOGIN")
+    func alertMarks(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

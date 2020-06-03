@@ -61,7 +61,6 @@ class TableViewCell: UITableViewCell {
     
 }
 
-//aqui eu tenho a quantidade de celulas exibidas e aonde minha celula esta percorrendo com as url de posterPath
 extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

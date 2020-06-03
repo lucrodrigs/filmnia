@@ -28,12 +28,16 @@ class ProfileViewController: UIViewController {
     var resultsList = ResultList(results: [])
 
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        updateTab()
+    }
+    
+    func updateTab() {
         switch segmentedControl?.selectedSegmentIndex {
         case 0:
             tableViewYourlist.isHidden = true
             collectionView.isHidden = false
             viewModel?.showFavoritesMovies()
-            viewModel?.showFavoritesTelevision()
+            
         case 1:
             tableViewYourlist.isHidden = true
             collectionView.isHidden = false
@@ -64,11 +68,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNeedsStatusBarAppearanceUpdate()
-        setupTableView()
+        setupProfileTableView()
         setupProfileCollectionCell()
         viewModel?.getDetailsProfile()
-        viewModel?.showFavoritesMovies()
-        viewModel?.showFavoritesTelevision()
+//        viewModel?.showFavoritesMovies()
+//        viewModel?.showFavoritesTelevision()
         viewModel?.delegate = self
         tableViewYourlist.tableFooterView = footer()
         collectionView.delegate = self
@@ -82,7 +86,12 @@ class ProfileViewController: UIViewController {
         self.tableViewYourlist.backgroundColor = .clear
     }
     
-    private func setupTableView() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTab()
+    }
+    
+    private func setupProfileTableView() {
         tableViewYourlist.register(UINib(nibName: "YourlistTableViewCell", bundle: nil), forCellReuseIdentifier: "YourlistTableViewCell")
     }
     

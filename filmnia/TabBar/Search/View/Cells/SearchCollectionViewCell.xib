@@ -39,6 +39,7 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="posterImage" destination="xlL-RB-JIW" id="M1r-VX-WNb"/>
+                <outlet property="progressLoad" destination="oBD-Ys-WEm" id="IZ6-Mf-aY4"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="75.669642857142847"/>
         </collectionViewCell>

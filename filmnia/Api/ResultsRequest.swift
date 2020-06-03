@@ -136,21 +136,23 @@ struct Genre: Codable {
 
 //MARK: - RequestTokenLogin
 struct ResultToken: Codable {
-    let success: Bool
-    let expiresAt: String
-    let requestToken: String
+    let success: Bool?
+    let expiresAt: String?
+    let requestToken: String?
+    let statusMessage: String?
 
     enum CodingKeys: String, CodingKey {
         case success
         case expiresAt = "expires_at"
         case requestToken = "request_token"
+        case statusMessage = "status_message"
     }
 }
 
 //MARK: - AccountSession
 struct SessionInfo: Codable {
-    let success: Bool
-    let sessionId: String
+    let success: Bool?
+    let sessionId: String?
     
     enum CodingKeys: String, CodingKey {
         case success

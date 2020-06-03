@@ -55,7 +55,10 @@ class ProfileViewModel {
                         itens.append(newItem)
                     }
                     let newResult = ResultsGeneral(results: itens)
-                    self.returnedRequestFavorites(results: newResult, type: .movie)
+                    self.showFavoritesTelevision()
+                    DispatchQueue.main.async {
+                        self.returnedRequestFavorites(results: newResult, type: .movie)
+                    }
                 }
             }
         }
@@ -74,7 +77,9 @@ class ProfileViewModel {
                         itens.append(newItem)
                     }
                     let newResult = ResultsGeneral(results: itens)
-                    self.returnedRequestFavorites(results: newResult, type: .tv)
+                    DispatchQueue.main.async {
+                        self.returnedRequestFavorites(results: newResult, type: .tv)
+                    }
                 }
             }
         }
@@ -132,18 +137,27 @@ class ProfileViewModel {
         }
     }
     
+    var objReturned = ["tv": false, "movie": false]
+    
     func returnedRequestFavorites(results: ResultsGeneral, type: MediaType) {
+        
         switch type {
         case .tv:
             resultTelevision = results
+            objReturned["tv"] = true
         case .movie:
             resultMovies = results
+            objReturned["movie"] = true
         }
         
         var response = ResultsGeneral(results: [])
         response.results.append(contentsOf: resultMovies?.results ?? [])
         response.results.append(contentsOf: resultTelevision?.results ?? [])
-        delegate?.showImagePosters(resultPoster: response)
+        if objReturned["tv"] ?? false && objReturned["movie"] ?? false {
+            delegate?.showImagePosters(resultPoster: response)
+            self.objReturned = ["tv": false, "movie": false]
+        }
+        
     }
     
 }

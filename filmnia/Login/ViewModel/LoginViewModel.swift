@@ -13,7 +13,7 @@ class LoginViewModel {
     var resultToken: [ResultToken] = []
     var service: HTTPRequest
     var variablesToken: ResultToken?
-    weak var delegate: LoginViewDelegate?
+    var delegateAlert: AlertDelegate?
     weak var coordinatorDelegate: LoginCoordinatorDelegate?
     
     init(service: HTTPRequest = HTTPRequest()) {
@@ -38,13 +38,13 @@ class LoginViewModel {
                                         "request_token":variablesToken?.requestToken ?? ""]
         
         service.validateLogin(endPoint: .urlValidateLoginAcess, params: params, type: ResultToken.self) { (result, error) in
-            if let error = error {
+            if error != nil || result?.statusMessage != nil {
                 print("error")
-                self.delegate?.erroLogin(error: error)
+                self.delegateAlert?.alertMarks(title: "Error in Login", message: "erro: \(result?.statusMessage ?? "")")
             } else {
-                if result != nil {
-                    self.createSessionForLogin(requestToken: self.variablesToken?.requestToken ?? "")
-                    Session.shared.sucess = result!.success
+                if let result = result {
+                    self.createSessionForLogin(requestToken: result.requestToken ?? "")
+                    Session.shared.sucess = result.success ?? false
                     self.coordinatorDelegate?.didLogin()
                 }
             }
@@ -54,12 +54,11 @@ class LoginViewModel {
     func createSessionForLogin(requestToken: String) {
         let params: [String: String] = ["request_token":requestToken]
         service.createSession(endPoint: .urlGetSession, params: params, type: SessionInfo.self) { (result, error) in
-            if let error = error {
+            if error != nil {
                 print("error")
-                self.delegate?.erroLogin(error: error)
             } else {
-                if result != nil {
-                    Session.shared.sessionId = result!.sessionId
+                if let result = result {
+                    Session.shared.sessionId = result.sessionId ?? ""
                 }
             }
         }

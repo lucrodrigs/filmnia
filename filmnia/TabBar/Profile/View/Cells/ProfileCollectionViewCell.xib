@@ -16,6 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="127" height="187"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FWc-gJ-iCo">
+                        <rect key="frame" x="48.5" y="78.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Q1A-rc-iW4"/>
+                            <constraint firstAttribute="height" constant="30" id="X38-ar-5FW"/>
+                        </constraints>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y2w-q4-IqP">
                         <rect key="frame" x="0.0" y="0.0" width="127" height="187"/>
                     </imageView>
@@ -25,11 +33,14 @@
                 <constraint firstItem="y2w-q4-IqP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7d0-tw-J6q"/>
                 <constraint firstItem="y2w-q4-IqP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FFB-8J-diV"/>
                 <constraint firstAttribute="bottom" secondItem="y2w-q4-IqP" secondAttribute="bottom" id="NB1-kG-Lsq"/>
+                <constraint firstItem="FWc-gJ-iCo" firstAttribute="centerX" secondItem="y2w-q4-IqP" secondAttribute="centerX" id="fse-UT-p9k"/>
                 <constraint firstAttribute="trailing" secondItem="y2w-q4-IqP" secondAttribute="trailing" id="hdl-lc-uFg"/>
+                <constraint firstItem="FWc-gJ-iCo" firstAttribute="centerY" secondItem="y2w-q4-IqP" secondAttribute="centerY" id="nvU-ZF-t3b"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="posterImage" destination="y2w-q4-IqP" id="EhU-Y7-YYf"/>
+                <outlet property="progressLoad" destination="FWc-gJ-iCo" id="YZW-LE-uYn"/>
             </connections>
             <point key="canvasLocation" x="139" y="121"/>
         </collectionViewCell>

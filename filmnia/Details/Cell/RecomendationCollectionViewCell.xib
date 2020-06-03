@@ -16,20 +16,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="187" height="278"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="0Ta-qF-XrL">
+                        <rect key="frame" x="78.5" y="124" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="MaI-F5-xLG"/>
+                            <constraint firstAttribute="height" constant="30" id="l0M-kG-t2v"/>
+                        </constraints>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kDp-05-OvK">
                         <rect key="frame" x="0.0" y="0.0" width="187" height="278"/>
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="0Ta-qF-XrL" firstAttribute="centerX" secondItem="kDp-05-OvK" secondAttribute="centerX" id="1SM-y2-Wwy"/>
                     <constraint firstItem="kDp-05-OvK" firstAttribute="top" secondItem="gy9-Wr-3Jr" secondAttribute="top" id="3m0-IX-Qng"/>
                     <constraint firstItem="kDp-05-OvK" firstAttribute="leading" secondItem="gy9-Wr-3Jr" secondAttribute="leading" id="YW2-dW-LOq"/>
                     <constraint firstAttribute="trailing" secondItem="kDp-05-OvK" secondAttribute="trailing" id="n6Q-Bi-bLI"/>
+                    <constraint firstItem="0Ta-qF-XrL" firstAttribute="centerY" secondItem="kDp-05-OvK" secondAttribute="centerY" id="skD-Zt-dmn"/>
                     <constraint firstAttribute="bottom" secondItem="kDp-05-OvK" secondAttribute="bottom" id="uTy-Pu-bUe"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="128" height="150"/>
             <connections>
                 <outlet property="posterImage" destination="kDp-05-OvK" id="U4U-LT-fNY"/>
+                <outlet property="progressLoad" destination="0Ta-qF-XrL" id="zIC-0C-eFz"/>
             </connections>
             <point key="canvasLocation" x="21.014492753623191" y="70.3125"/>
         </collectionViewCell>

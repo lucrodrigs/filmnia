@@ -11,7 +11,8 @@ import UIKit
 class SearchCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
-
+    @IBOutlet weak var progressLoad: UIActivityIndicatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cornerRadiusPoster()
@@ -24,7 +25,10 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     func urlShowImage(path: String) {
             if let url = URL(string: path) {
-                posterImage.downloadImage(from: url)
+                posterImage.downloadImage(from: url, completion: {
+                    [weak self] in
+                    self?.progressLoad.stopAnimating()
+                })
             }
         }
     

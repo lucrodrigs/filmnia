@@ -40,6 +40,7 @@
             <size key="customSize" width="128" height="150"/>
             <connections>
                 <outlet property="posterImage" destination="YXz-TU-eFY" id="U3Q-g5-wdx"/>
+                <outlet property="progressLoad" destination="u6E-Ge-3xT" id="u4r-ZA-3a1"/>
             </connections>
             <point key="canvasLocation" x="21.014492753623191" y="70.3125"/>
         </collectionViewCell>
