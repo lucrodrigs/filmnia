@@ -34,3 +34,7 @@ Current linked with github project using TravisCI.
 # overview app filmnia
 
 ![filmniahome (1)](https://user-images.githubusercontent.com/16005951/85440943-f0d3f080-b564-11ea-9797-07c2fb609581.gif)
+![filmniasearch](https://user-images.githubusercontent.com/16005951/85443315-79539080-b567-11ea-9a65-24581cbbb3d8.gif)
+![filmniafavorites](https://user-images.githubusercontent.com/16005951/85445654-fed84000-b569-11ea-8f76-9bdb446786bb.gif)
+![criacao-de-lista](https://user-images.githubusercontent.com/16005951/85445849-31823880-b56a-11ea-8a8b-865c67dad777.gif)
+![completa](https://user-images.githubusercontent.com/16005951/85446483-ddc41f00-b56a-11ea-82b6-b953c62698fe.gif)
