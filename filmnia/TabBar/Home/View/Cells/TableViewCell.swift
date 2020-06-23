@@ -8,17 +8,14 @@
 
 import UIKit
 
-protocol DetailsSelectDelegate {
-    func movieSelected(movie: Movies)
-    func televisonSelected(televison: Television)
-}
+//renomear para SectionsTableViewCell
 
 class TableViewCell: UITableViewCell {
     
     var resultsRequestMovie: ResultsMovies?
     var resultsRequestTelevison: ResultsTelevision?
     var section: CollectionSection?
-    var movieDelegate: DetailsSelectDelegate?
+    var delegate: DetailsSelectDelegate?
     var homeView: HomeViewController?
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,6 +24,9 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
+        self.collectionView.backgroundColor = .clear
+        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .clear
     }
     
     func setupCollectionView(view: HomeViewController) {
@@ -61,7 +61,6 @@ class TableViewCell: UITableViewCell {
     
 }
 
-//aqui eu tenho a quantidade de celulas exibidas e aonde minha celula esta percorrendo com as url de posterPath
 extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -111,10 +110,10 @@ extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, U
         switch homeView?.segmentedControl?.selectedSegmentIndex {
         case 0:
             guard let movies = resultsRequestMovie?.results[indexPath.row] else { return }
-            movieDelegate?.movieSelected(movie: movies)
+            delegate?.movieSelected(movie: movies, flux: .home)
         case 1:
             guard let television = resultsRequestTelevison?.results[indexPath.row] else { return }
-            movieDelegate?.televisonSelected(televison: television)
+            delegate?.televisonSelected(televison: television, flux: .home)
         default:
             break
         }

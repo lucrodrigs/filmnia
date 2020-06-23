@@ -13,5 +13,8 @@ class FTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.isTranslucent = true
+        self.tabBar.barTintColor = .ColorDarkBlueDefault
+        self.tabBar.unselectedItemTintColor = .ColorGrayDefault
+        self.tabBar.selectedImageTintColor = .white
     }
 }

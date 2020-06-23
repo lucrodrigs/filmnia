@@ -2,15 +2,11 @@
 //  File.swift
 //  filmnia
 //
-//  Created by UserTQI on 30/03/20.
+//  Created by Lucas Rodrigues Dias on 30/03/20.
 //  Copyright © 2020 lucrodrigs. All rights reserved.
 //
 
 import Foundation
-
-protocol SearchViewDelegate {
-    func showImagePosters(resultPoster: ResultsMovies)
-}
 
 class SearchViewModel {
     
@@ -36,12 +32,12 @@ class SearchViewModel {
     
     func reloadSearch() {
         if !searchQuery.isEmpty {
-            resultSearchMovies(query: searchQuery)
+            resultSearch(query: searchQuery)
         }
     }
             
-    func resultSearchMovies(query: String) {
-        service.requestGetSearch(endPoint: .urlSearchMovies, query: query, type: ResultsMovies.self) { (result, error) in
+    func resultSearch(query: String) {
+        service.requestGetSearch(endPoint: .urlSearch, query: query, type: ResultsMovies.self) { (result, error) in
             if error != nil {
                 print("error")
             } else {

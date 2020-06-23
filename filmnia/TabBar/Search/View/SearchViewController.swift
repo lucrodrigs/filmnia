@@ -17,8 +17,13 @@ class SearchViewController: UIViewController {
     var delegate: DetailsSelectDelegate?
     var resultsRequest: ResultsMovies?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         setupSearchCollectionCell()
         hideKeyboardWhenTappedAround()
         viewModelReload()
@@ -27,6 +32,8 @@ class SearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
+        self.collectionView.backgroundColor = .clear
     }
     
         func setupSearchCollectionCell() {
@@ -47,12 +54,13 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.searchTextField.textColor = .white
         if searchText.isEmpty {
             viewModel.searchQuery = searchText
             resultsRequest?.results.removeAll()
             collectionView.reloadData()
         } else {
-            viewModel.resultSearchMovies(query: searchText)
+            viewModel.resultSearch(query: searchText)
         }
     }
     
@@ -71,15 +79,17 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell
+        
         if let result = resultsRequest {
             cell?.cellPosterPath(dataMovie: result.results[indexPath.row])
         }
+        
         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let movies = resultsRequest?.results[indexPath.row] else { return }
-        delegate?.movieSelected(movie: movies)
+        delegate?.movieSelected(movie: movies, flux: .search)
     }
     
 }

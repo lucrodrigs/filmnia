@@ -16,12 +16,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="127" height="187"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="oBD-Ys-WEm">
+                        <rect key="frame" x="48.5" y="78.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="EHB-zU-1IT"/>
+                            <constraint firstAttribute="width" constant="30" id="lnp-WY-nWR"/>
+                        </constraints>
+                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xlL-RB-JIW">
                         <rect key="frame" x="0.0" y="0.0" width="127" height="187"/>
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="oBD-Ys-WEm" firstAttribute="centerY" secondItem="bHG-ow-cDH" secondAttribute="centerY" id="72t-m8-4Q0"/>
                     <constraint firstAttribute="trailing" secondItem="xlL-RB-JIW" secondAttribute="trailing" id="Gwy-UU-oNF"/>
+                    <constraint firstItem="oBD-Ys-WEm" firstAttribute="centerX" secondItem="bHG-ow-cDH" secondAttribute="centerX" id="Kh8-vc-E6v"/>
                     <constraint firstItem="xlL-RB-JIW" firstAttribute="leading" secondItem="bHG-ow-cDH" secondAttribute="leading" id="NOJ-bB-Rwd"/>
                     <constraint firstAttribute="bottom" secondItem="xlL-RB-JIW" secondAttribute="bottom" id="hdc-o8-FFM"/>
                     <constraint firstItem="xlL-RB-JIW" firstAttribute="top" secondItem="bHG-ow-cDH" secondAttribute="top" id="vrH-2n-8Hu"/>
@@ -29,6 +39,7 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="posterImage" destination="xlL-RB-JIW" id="M1r-VX-WNb"/>
+                <outlet property="progressLoad" destination="oBD-Ys-WEm" id="IZ6-Mf-aY4"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="75.669642857142847"/>
         </collectionViewCell>

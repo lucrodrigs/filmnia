@@ -8,58 +8,10 @@
 
 import UIKit
 
-typealias CollectionSection = HomeViewController.Section
-
 class HomeViewController: UIViewController {
     
-    enum Section: Int, CaseIterable {
-        case popular = 0
-        case upComing
-        case nowPlaying
-        
-        var titleSectionsMovies: String {
-            switch self {
-            case .popular:
-                return " filmes populares"
-            case .upComing:
-                return " filmes em breve"
-            case .nowPlaying:
-                return " filmes em cartaz"
-            }
-        }
-        
-        var titleSectionsTelevision: String {
-            switch self {
-            case .popular:
-                return " series populares"
-            case .upComing:
-                return " series toprated"
-            case .nowPlaying:
-                return " series na televisão"
-            }
-        }
-        
-        var height: CGFloat {
-            switch self {
-            case .popular:
-                return 278
-            default:
-                return 187
-            }
-        }
-        
-        var sizeCollectionCell: CGSize {
-            switch self {
-            case .popular:
-                return CGSize(width: 187, height: height)
-            default:
-                return CGSize(width: 168*3/4, height: height)
-            }
-        }
-        
-    }
-    
     //MARK: - Variables
+    var homeSection = EnumerateSection()
     var viewModel = HomeViewModel()
     var delegate: DetailsSelectDelegate?
     var popularMovies = ResultsMovies(results: [])
@@ -72,10 +24,7 @@ class HomeViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var tableViewHome: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl?
-    
-    @IBAction func buttonProfile(_ sender: UIButton!) {
-        viewModel.callProfile()
-    }
+    @IBOutlet weak var viewSegmented: UIView!
     
     @IBAction func indexChanged(_ sender: Any?) {
         switch segmentedControl?.selectedSegmentIndex {
@@ -93,8 +42,13 @@ class HomeViewController: UIViewController {
             tableViewHome.reloadData()
         }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         setupTableView()
         viewModel.resultPosterGetMoviesPopulars()
         viewModel.resultPosterGetUpComing()
@@ -105,6 +59,8 @@ class HomeViewController: UIViewController {
         viewModel.delegate = self
         tableViewHome.delegate = self
         tableViewHome.dataSource = self
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
+        self.tableViewHome.backgroundColor = .clear
     }
     
     private func setupTableView() {
@@ -128,7 +84,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 0
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,16 +92,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title = UILabel()
-       
+        title.font = UIFont(name: "Gilroy-SemiBold", size: title.font.pointSize)
+        title.textColor = .white
+        
         switch segmentedControl?.selectedSegmentIndex {
         case 0:
-            title.text = Section.allCases[section].titleSectionsMovies
+            title.text = EnumerateSection.Section.allCases[section].titleSectionsMovies
         case 1:
-            title.text = Section.allCases[section].titleSectionsTelevision
+            title.text = EnumerateSection.Section.allCases[section].titleSectionsTelevision
         default:
             break
         }
-        
         return title
     }
     
@@ -155,18 +111,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = Section(rawValue: indexPath.section)
+        let section = EnumerateSection.Section(rawValue: indexPath.section)
         return section?.height ?? 0.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableViewHome.dequeueReusableCell(withIdentifier: "TableViewCell") as? TableViewCell, let section = Section(rawValue: indexPath.section) else {
+        guard let cell = tableViewHome.dequeueReusableCell(withIdentifier: "TableViewCell") as? TableViewCell, let section = EnumerateSection.Section(rawValue: indexPath.section) else {
             return UITableViewCell()
         }
         
         cell.setupCollectionView(view: self)
-        cell.movieDelegate = self
+        cell.delegate = self
         
         switch segmentedControl?.selectedSegmentIndex {
         case 0:
@@ -192,22 +148,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.reloadData()
         return cell
-        
     }
-    
 }
 
 extension HomeViewController: HomeViewDelegate, DetailsSelectDelegate {
     
-    func televisonSelected(televison: Television) {
-        delegate?.televisonSelected(televison: televison)
+    func televisonSelected(televison: Television, flux: Flux) {
+        delegate?.televisonSelected(televison: televison, flux: flux)
     }
     
-    func movieSelected(movie: Movies) {
-        delegate?.movieSelected(movie: movie)
+    func movieSelected(movie: Movies, flux: Flux) {
+        delegate?.movieSelected(movie: movie, flux: flux)
     }
     
-    func showImagePosters(resultPoster: ContentSection) {
+    func showImagePosters(resultPoster: EnumerateSection.ContentSection) {
         
             switch resultPoster {
             case .moviesPopular(let result):

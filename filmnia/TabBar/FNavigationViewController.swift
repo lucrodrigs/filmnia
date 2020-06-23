@@ -13,6 +13,8 @@ class FNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarHidden(true, animated: false)
+        self.navigationBar.isTranslucent = true
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundOriginal.jpeg")!)
     }
     
 }
