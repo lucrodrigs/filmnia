@@ -31,6 +31,8 @@ Current linked with github project using TravisCI.
 
 [![Twitter](https://img.shields.io/twitter/follow/lucrodrigsd?style=social)](https://twitter.com/intent/follow?screen_name=lucrodrigsd)
 
+![Custom badge](https://img.shields.io/endpoint?color=blue&label=%20&logo=linkedin&logoColor=blue&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Flucas-rodrigues-dias-72633860%2F)
+
 # overview app filmnia
 
 ![filmniahome (1)](https://user-images.githubusercontent.com/16005951/85440943-f0d3f080-b564-11ea-9797-07c2fb609581.gif)
